@@ -379,7 +379,7 @@ button:focus-visible {
   color: var(--paper-white);
   background:
     linear-gradient(90deg, rgba(2, 11, 31, 0.94) 0%, rgba(6, 23, 53, 0.74) 48%, rgba(6, 23, 53, 0.2) 76%, rgba(2, 11, 31, 0.34) 100%),
-    url("../assets/hero-study-desk.jpg") center right / cover no-repeat,
+    url("/assets/hero-study-desk.jpg") center right / cover no-repeat,
     linear-gradient(135deg, var(--deep-navy), var(--royal-navy) 48%, #102b5c);
 }
 
@@ -790,7 +790,7 @@ section {
   color: var(--paper-white);
   background:
     linear-gradient(135deg, rgba(2, 11, 31, 0.94), rgba(6, 23, 53, 0.88)),
-    url("../assets/global-education-hero.jpg") center / cover no-repeat;
+    url("/assets/global-education-hero.jpg") center / cover no-repeat;
   box-shadow: 0 18px 44px rgba(6, 23, 53, 0.14);
 }
 
@@ -1307,7 +1307,7 @@ section {
 .hours-section {
   background:
     linear-gradient(135deg, rgba(2, 11, 31, 0.96), rgba(6, 23, 53, 0.88)),
-    url("../assets/global-education-hero.jpg") center / cover no-repeat;
+    url("/assets/global-education-hero.jpg") center / cover no-repeat;
   color: var(--paper-white);
 }
 
@@ -1545,15 +1545,15 @@ section {
     var(--exam-image) center / cover no-repeat;
 }
 
-.exam-tara { --exam-image: url("../assets/exams/tara.png"); }
-.exam-tmua { --exam-image: url("../assets/exams/tmua.png"); }
-.exam-cents { --exam-image: url("../assets/exams/cents.png"); }
-.exam-ap { --exam-image: url("../assets/exams/ap.png"); }
-.exam-sat { --exam-image: url("../assets/exams/sat.png"); }
-.exam-ielts { --exam-image: url("../assets/exams/ielts.png"); }
-.exam-oet { --exam-image: url("../assets/exams/oet.png"); }
-.exam-oxford { --exam-image: url("../assets/exams/oxford.png"); }
-.exam-cambridge { --exam-image: url("../assets/exams/cambridge.png"); }
+.exam-tara { --exam-image: url("/assets/exams/tara.png"); }
+.exam-tmua { --exam-image: url("/assets/exams/tmua.png"); }
+.exam-cents { --exam-image: url("/assets/exams/cents.png"); }
+.exam-ap { --exam-image: url("/assets/exams/ap.png"); }
+.exam-sat { --exam-image: url("/assets/exams/sat.png"); }
+.exam-ielts { --exam-image: url("/assets/exams/ielts.png"); }
+.exam-oet { --exam-image: url("/assets/exams/oet.png"); }
+.exam-oxford { --exam-image: url("/assets/exams/oxford.png"); }
+.exam-cambridge { --exam-image: url("/assets/exams/cambridge.png"); }
 
 .spotlight.has-photo {
   min-height: 210px;
@@ -1565,7 +1565,7 @@ section {
   border-color: rgba(199, 55, 47, 0.24);
   background:
     linear-gradient(180deg, rgba(2, 11, 31, 0.08), rgba(2, 11, 31, 0.92)),
-    url("../assets/destination-collage.jpg") center / 240% auto no-repeat;
+    url("/assets/destination-collage.jpg") center / 240% auto no-repeat;
 }
 
 .spotlight.has-photo p {
@@ -1589,7 +1589,7 @@ section {
   border-color: rgba(199, 55, 47, 0.24);
   background:
     linear-gradient(180deg, rgba(2, 11, 31, 0.06), rgba(2, 11, 31, 0.92)),
-    url("../assets/exam-prep-collage.jpg") center / 260% auto no-repeat;
+    url("/assets/exam-prep-collage.jpg") center / 260% auto no-repeat;
 }
 
 .spotlight.exam-photo p {
@@ -1631,7 +1631,7 @@ section {
   border-radius: var(--radius) var(--radius) 0 0;
   background:
     linear-gradient(180deg, rgba(6, 23, 53, 0.02), rgba(6, 23, 53, 0.28)),
-    url("../assets/academic-programs-collage.jpg") center / 300% auto no-repeat;
+    url("/assets/academic-programs-collage.jpg") center / 300% auto no-repeat;
 }
 
 .program-internship { background-position: 0% center; }
@@ -1693,7 +1693,7 @@ section {
   border-radius: var(--radius) var(--radius) 0 0;
   background:
     linear-gradient(180deg, rgba(6, 23, 53, 0.02), rgba(6, 23, 53, 0.22)),
-    var(--country-image, url("../assets/destination-collage.jpg")) center / cover no-repeat;
+    var(--country-image, url("/assets/destination-collage.jpg")) center / cover no-repeat;
 }
 
 .country-card.has-visual .country-visual {
@@ -1702,20 +1702,20 @@ section {
   border-radius: var(--radius) var(--radius) 0 0;
 }
 
-.visual-finland { --country-image: url("../assets/countries/finland.jpg"); }
-.visual-switzerland { --country-image: url("../assets/countries/switzerland.jpg"); }
-.visual-austria { --country-image: url("../assets/countries/austria.jpg"); }
-.visual-belgium { --country-image: url("../assets/countries/belgium.jpg"); }
-.visual-spain { --country-image: url("../assets/countries/spain.jpg"); }
-.visual-japan { --country-image: url("../assets/countries/japan.jpg"); }
-.visual-poland { --country-image: url("../assets/countries/poland.jpg"); }
-.visual-china { --country-image: url("../assets/countries/china.jpg"); }
-.visual-germany { --country-image: url("../assets/countries/germany.jpg"); }
-.visual-canada { --country-image: url("../assets/countries/canada.jpg"); }
-.visual-america { --country-image: url("../assets/countries/america.jpg"); }
-.visual-holland { --country-image: url("../assets/countries/holland.jpg"); }
-.visual-italy { --country-image: url("../assets/countries/italy.jpg"); }
-.visual-uk { --country-image: url("../assets/countries/uk.jpg"); }
+.visual-finland { --country-image: url("/assets/countries/finland.jpg"); }
+.visual-switzerland { --country-image: url("/assets/countries/switzerland.jpg"); }
+.visual-austria { --country-image: url("/assets/countries/austria.jpg"); }
+.visual-belgium { --country-image: url("/assets/countries/belgium.jpg"); }
+.visual-spain { --country-image: url("/assets/countries/spain.jpg"); }
+.visual-japan { --country-image: url("/assets/countries/japan.jpg"); }
+.visual-poland { --country-image: url("/assets/countries/poland.jpg"); }
+.visual-china { --country-image: url("/assets/countries/china.jpg"); }
+.visual-germany { --country-image: url("/assets/countries/germany.jpg"); }
+.visual-canada { --country-image: url("/assets/countries/canada.jpg"); }
+.visual-america { --country-image: url("/assets/countries/america.jpg"); }
+.visual-holland { --country-image: url("/assets/countries/holland.jpg"); }
+.visual-italy { --country-image: url("/assets/countries/italy.jpg"); }
+.visual-uk { --country-image: url("/assets/countries/uk.jpg"); }
 
 .advisor-card,
 .signal-card {
@@ -1922,7 +1922,7 @@ section {
   background:
     linear-gradient(90deg, rgba(2, 11, 31, 0.94), rgba(2, 11, 31, 0.35)),
     linear-gradient(180deg, rgba(2, 11, 31, 0.02), rgba(2, 11, 31, 0.92)),
-    url("../assets/country-decision-banner.jpg") center / cover no-repeat;
+    url("/assets/country-decision-banner.jpg") center / cover no-repeat;
   box-shadow: 0 24px 70px rgba(2, 11, 31, 0.24);
 }
 
@@ -1976,7 +1976,7 @@ section {
   color: var(--paper-white);
   background:
     linear-gradient(145deg, rgba(2, 11, 31, 0.88), rgba(6, 23, 53, 0.68)),
-    url("../assets/country-decision-banner.jpg") center / cover no-repeat;
+    url("/assets/country-decision-banner.jpg") center / cover no-repeat;
   overflow: hidden;
 }
 
@@ -2085,7 +2085,7 @@ section {
   background:
     linear-gradient(90deg, rgba(2, 11, 31, 0.92), rgba(2, 11, 31, 0.38)),
     linear-gradient(180deg, rgba(2, 11, 31, 0.04), rgba(2, 11, 31, 0.88)),
-    url("../assets/destination-collage.jpg") center / cover no-repeat;
+    url("/assets/destination-collage.jpg") center / cover no-repeat;
   box-shadow: 0 24px 70px rgba(2, 11, 31, 0.24);
 }
 
@@ -2135,7 +2135,7 @@ section {
   border-radius: var(--radius);
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 245, 239, 0.96)),
-    url("../assets/global-education-hero.jpg") center / cover no-repeat;
+    url("/assets/global-education-hero.jpg") center / cover no-repeat;
   box-shadow: 0 14px 34px rgba(6, 23, 53, 0.07);
 }
 
