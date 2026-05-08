@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FilterChip } from "@/components/ui/FilterChip";
 
 type CountryCard = {
   slug: string;
@@ -39,39 +38,38 @@ export function CountryCardGrid({ countries }: CountryCardGridProps) {
   return (
     <div>
       {/* Filter chips */}
-      <div className="flex flex-wrap gap-2 mb-8">
+      <div className="filter-bar">
         {filters.map((f) => (
-          <FilterChip
+          <button
             key={f.key}
-            label={f.label}
-            active={active === f.key}
+            className={`filter-chip${active === f.key ? " active" : ""}`}
             onClick={() => setActive(f.key)}
-          />
+          >
+            {f.label}
+          </button>
         ))}
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
+      <div className="country-grid">
         {filtered.map((c) => (
           <Link
             key={c.slug}
             href={`/ulkeler/${c.slug}`}
-            className="group rounded-[var(--radius)] overflow-hidden bg-white shadow-card hover:shadow-lg transition-shadow"
+            className="country-card has-visual"
           >
-            <div className="relative h-36">
+            <div className="country-visual">
               <Image
                 src={c.image}
                 alt={c.name}
                 fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/60 to-transparent" />
-              <span className="absolute bottom-3 left-3 text-2xl">{c.flag}</span>
             </div>
-            <div className="p-4">
-              <h3 className="text-sm font-semibold text-navy-deep mb-1">{c.name}</h3>
-              <p className="text-xs text-muted-slate leading-relaxed line-clamp-2">{c.description}</p>
-            </div>
+            <span className="country-flag">{c.flag}</span>
+            <h3>{c.name}</h3>
+            <p>{c.description}</p>
+            <span className="text-link">Detaylari Incele</span>
           </Link>
         ))}
       </div>

@@ -2,34 +2,6 @@
 
 import { useState, type FormEvent } from "react";
 
-const countries = [
-  "İngiltere",
-  "İskoçya",
-  "İrlanda",
-  "Almanya",
-  "Kanada",
-  "Amerika",
-  "Hollanda",
-  "İtalya",
-  "Finlandiya",
-  "İsviçre",
-  "Avusturya",
-  "Belçika",
-  "İspanya",
-  "Japonya",
-  "Polonya",
-  "Çin",
-  "Diğer",
-];
-
-const educationLevels = ["Lisans", "Yüksek Lisans", "Doktora", "Dil Okulu"];
-
-const trustBadges = [
-  { label: "Bilgileriniz gizli tutulur", color: "text-green-600 bg-green-50" },
-  { label: "24 saat içinde dönüş", color: "text-blue-600 bg-blue-50" },
-  { label: "Ücretsiz danışmanlık", color: "text-amber-600 bg-amber-50" },
-];
-
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
 
@@ -43,97 +15,118 @@ export function ContactForm() {
 
   if (submitted) {
     return (
-      <aside className="rounded-[var(--radius)] bg-white border border-border-soft shadow-card p-8 text-center">
-        <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
-          <span className="text-green-600 text-3xl">&#10003;</span>
-        </div>
-        <h2 className="text-xl font-bold text-navy mb-2">Talebiniz Alındı!</h2>
-        <p className="text-muted-slate text-sm leading-relaxed">
-          Danışmanlarımız en kısa sürede sizinle iletişime geçecek.
-        </p>
-      </aside>
+      <div className="form-card" style={{ textAlign: "center" }}>
+        <div style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>&#10003;</div>
+        <h2>Talebiniz Alindi!</h2>
+        <p>Danismanlarimiz en kisa surede sizinle iletisime gececek.</p>
+      </div>
     );
   }
 
-  const inputClass =
-    "w-full rounded-lg border border-border-soft bg-white px-4 py-3 text-sm text-navy placeholder:text-muted-slate outline-none focus:border-navy focus:ring-2 focus:ring-navy/20 transition-colors";
-
   return (
-    <aside className="rounded-[var(--radius)] bg-white border border-border-soft shadow-card p-6 md:p-8">
-      {/* Trust badges */}
-      <div className="flex flex-wrap gap-2 mb-6">
-        {trustBadges.map((badge) => (
-          <span
-            key={badge.label}
-            className={`inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full ${badge.color}`}
-          >
-            <span>&#10003;</span> {badge.label}
-          </span>
-        ))}
+    <form className="form-card" onSubmit={handleSubmit} data-contact-form="" data-primary-form="">
+      <div className="form-head">
+        <strong>Bilgi isteyin, danismanlarimiz sizi arasin.</strong>
+        <span>
+          Formu doldurun; hedef ulke, okul ve basvuru sureciniz icin ekibimiz en
+          kisa surede size donus yapsin.
+        </span>
       </div>
-
-      {/* Form */}
-      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-        <input
-          required
-          name="name"
-          type="text"
-          placeholder="Ad Soyad"
-          className={inputClass}
-        />
-        <input
-          required
-          name="email"
-          type="email"
-          placeholder="E-posta"
-          className={inputClass}
-        />
-        <input
-          required
-          name="phone"
-          type="tel"
-          placeholder="Telefon"
-          className={inputClass}
-        />
-        <select
-          required
-          name="country"
-          defaultValue=""
-          className={inputClass}
-        >
-          <option value="" disabled>
-            Hedef Ülke Seçin
-          </option>
-          {countries.map((c) => (
-            <option key={c}>{c}</option>
-          ))}
-        </select>
-        <select
-          required
-          name="education"
-          defaultValue=""
-          className={inputClass}
-        >
-          <option value="" disabled>
-            Eğitim Seviyesi Seçin
-          </option>
-          {educationLevels.map((l) => (
-            <option key={l}>{l}</option>
-          ))}
-        </select>
-        <textarea
-          name="message"
-          rows={4}
-          placeholder="Mesajınız"
-          className={inputClass}
-        />
-        <button
-          type="submit"
-          className="w-full rounded-[var(--radius)] bg-study-red text-white font-semibold py-3 text-sm hover:bg-soft-red transition-colors cursor-pointer"
-        >
-          Ücretsiz Danışmanlık İsteyin &rarr;
+      <div className="form-grid">
+        <div className="field">
+          <label htmlFor="fullName">Ad Soyad</label>
+          <input
+            id="fullName"
+            name="fullName"
+            autoComplete="name"
+            placeholder="Adiniz ve soyadiniz"
+            required
+          />
+        </div>
+        <div className="field">
+          <label htmlFor="phone">Telefon</label>
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            autoComplete="tel"
+            placeholder="+90"
+            required
+          />
+        </div>
+        <div className="field">
+          <label htmlFor="email">E-posta</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            autoComplete="email"
+            placeholder="ornek@mail.com"
+            required
+          />
+        </div>
+        <div className="field">
+          <label htmlFor="service">Ilgilendiginiz Program</label>
+          <select id="service" name="service" required defaultValue="">
+            <option value="" disabled>
+              Seciniz
+            </option>
+            <option>Universite Egitimi</option>
+            <option>Yuksek Lisans / MBA</option>
+            <option>Dil Okullari</option>
+            <option>Lise Egitimi</option>
+            <option>Sinav Hazirligi</option>
+            <option>Akademik Programlar</option>
+          </select>
+        </div>
+        <div className="field">
+          <label htmlFor="country">Gitmek Istediginiz Ulke</label>
+          <select id="country" name="country" required defaultValue="">
+            <option value="" disabled>
+              Seciniz
+            </option>
+            <option>Ingiltere</option>
+            <option>Kanada</option>
+            <option>Amerika</option>
+            <option>Almanya</option>
+            <option>Hollanda</option>
+            <option>Italya</option>
+            <option>Diger</option>
+          </select>
+        </div>
+        <div className="field">
+          <label htmlFor="contactTime">Size ne zaman ulasalim?</label>
+          <select id="contactTime" name="contactTime" required defaultValue="">
+            <option value="" disabled>
+              Seciniz
+            </option>
+            <option>Bugun</option>
+            <option>Yarin</option>
+            <option>Hafta ici</option>
+            <option>Hafta sonu</option>
+          </select>
+        </div>
+        <div className="field full">
+          <label htmlFor="message">Mesajiniz</label>
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Sorularinizi veya hedeflediginiz bolum/programi yazabilirsiniz."
+          />
+        </div>
+      </div>
+      <div className="form-actions">
+        <button className="btn btn-primary" type="submit">
+          Bilgi Iste
         </button>
-      </form>
-    </aside>
+        <a className="btn btn-whatsapp" href="#" data-whatsapp="">
+          WhatsApp&apos;tan Yazin
+        </a>
+      </div>
+      <p className="privacy">
+        Bilgileriniz gizlidir. Danismanlarimiz yalnizca basvurunuz hakkinda
+        iletisim kurmak icin kullanir.
+      </p>
+    </form>
   );
 }

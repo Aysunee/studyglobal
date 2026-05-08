@@ -67,6 +67,7 @@ const roadmapCards = [
     text: "Kariyerinizi guclendirecek akademik firsatlari kesfedin.",
     items: ["Staj + Proje Calismalari", "Akademik Yaz Okullari", "GAC - GBC - WLE"],
     href: "/akademik-programlar",
+    linkText: "Tum programlari incele",
     featured: true,
   },
   {
@@ -75,6 +76,7 @@ const roadmapCards = [
     text: "Hedef sinavlara hazirlanin, puaninizi birlikte yukseltelim.",
     items: ["IELTS, OET, SAT, AP", "TMUA", "Cambridge Exams"],
     href: "/sinavlar",
+    linkText: "Tum sinavlari incele",
     featured: false,
   },
   {
@@ -83,6 +85,7 @@ const roadmapCards = [
     text: "Hayalinizdeki ulkede dogru universite ve programi bulun.",
     items: ["Ingiltere, Kanada, Amerika", "Hollanda, Almanya, Italya", "ve daha fazlasi"],
     href: "/yurt-disi-egitim",
+    linkText: "Ulkeleri kesfet",
     featured: false,
   },
 ];
@@ -169,43 +172,29 @@ export default function HomePage() {
     <>
       {/* 1 ---- Hero ---- */}
       <HeroSlider>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          {/* Left copy */}
-          <div>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-5">
-              Global egitim yolculugunu birlikte tasarlayalim
-            </h1>
-            <p className="text-white/80 text-base md:text-lg leading-relaxed mb-8 max-w-lg">
-              Universite basvurularindan dil okullarina, sinav hazirligindan akademik programlara ve
-              ulke secimine kadar her adimda yaninizdayiz. Dogru tercih, guclu basvuru, basarili
-              gelecek.
-            </p>
-            <div className="flex flex-wrap gap-4 mb-8">
-              <Button variant="primary" href="/iletisim">
-                Ucretsiz Danismanlik Al
-              </Button>
-              <Button variant="secondary" href={process.env.NEXT_PUBLIC_WHATSAPP_URL ?? "https://wa.me/"}>
-                WhatsApp&apos;tan Sor
-              </Button>
-            </div>
-            <div className="flex flex-wrap gap-4">
-              {["14+ Yil Deneyim", "Global Egitim Danismanligi", "Guvenli ve Seffaf Surec"].map(
-                (point) => (
-                  <span
-                    key={point}
-                    className="text-xs text-white/70 border border-white/20 rounded-full px-3 py-1"
-                  >
-                    {point}
-                  </span>
-                ),
-              )}
-            </div>
+        <div className="hero-copy">
+          <h1>Global egitim yolculugunu birlikte tasarlayalim</h1>
+          <p>
+            Universite basvurularindan dil okullarina, sinav hazirligindan akademik programlara ve
+            ulke secimine kadar her adimda yaninizdayiz. Dogru tercih, guclu basvuru, basarili
+            gelecek.
+          </p>
+          <div className="hero-actions">
+            <Button variant="primary" href="/iletisim">
+              Ucretsiz Danismanlik Al
+            </Button>
+            <Button variant="secondary" href={process.env.NEXT_PUBLIC_WHATSAPP_URL ?? "https://wa.me/"}>
+              WhatsApp&apos;tan Sor
+            </Button>
           </div>
-
-          {/* Right form */}
-          <div>
-            <LeadForm />
+          <div className="hero-points">
+            <div className="point">14+ Yil Deneyim</div>
+            <div className="point">Global Egitim Danismanligi</div>
+            <div className="point">Guvenli ve Seffaf Surec</div>
           </div>
+        </div>
+        <div className="hero-side">
+          <LeadForm />
         </div>
       </HeroSlider>
 
@@ -220,8 +209,8 @@ export default function HomePage() {
       />
 
       {/* 3 ---- Services ---- */}
-      <section className="py-20 bg-ivory">
-        <div className="mx-auto max-w-[var(--max-width-site)] px-5">
+      <section className="service-visual-section">
+        <div className="container">
           <SectionHead
             eyebrow="Hizmetlerimiz"
             title="Yurt disi egitim surecinizde yaninizdayiz"
@@ -232,62 +221,25 @@ export default function HomePage() {
       </section>
 
       {/* 4 ---- Roadmap cards ---- */}
-      <section className="py-20 bg-white">
-        <div className="mx-auto max-w-[var(--max-width-site)] px-5">
+      <section>
+        <div className="container">
           <SectionHead eyebrow="Yol haritaniz" title="Size en uygun yolu birlikte planlayalim" />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid-3">
             {roadmapCards.map((card) => (
               <article
                 key={card.title}
-                className={`rounded-[var(--radius)] p-6 flex flex-col ${
-                  card.featured
-                    ? "bg-navy-deep text-white"
-                    : "bg-white border border-border-soft shadow-card"
-                }`}
+                className={card.featured ? "card featured" : "card"}
               >
-                <span
-                  className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold mb-4 ${
-                    card.featured ? "bg-study-red text-white" : "bg-ivory text-navy-deep"
-                  }`}
-                >
-                  {card.icon}
-                </span>
-                <h3
-                  className={`text-base font-semibold mb-2 ${
-                    card.featured ? "text-white" : "text-navy-deep"
-                  }`}
-                >
-                  {card.title}
-                </h3>
-                <p
-                  className={`text-sm leading-relaxed mb-4 ${
-                    card.featured ? "text-white/70" : "text-muted-slate"
-                  }`}
-                >
-                  {card.text}
-                </p>
-                <ul className="text-sm space-y-1 mb-5 flex-1">
+                <span className="icon">{card.icon}</span>
+                <h3>{card.title}</h3>
+                <p>{card.text}</p>
+                <ul>
                   {card.items.map((item) => (
-                    <li
-                      key={item}
-                      className={card.featured ? "text-white/60" : "text-muted-slate"}
-                    >
-                      &bull; {item}
-                    </li>
+                    <li key={item}>{item}</li>
                   ))}
                 </ul>
-                <Link
-                  href={card.href}
-                  className={`text-sm font-medium hover:underline ${
-                    card.featured ? "text-study-red" : "text-study-red"
-                  }`}
-                >
-                  {card.title === "Akademik Programlar"
-                    ? "Tum programlari incele"
-                    : card.title === "Sinavlar"
-                      ? "Tum sinavlari incele"
-                      : "Ulkeleri kesfet"}
-                  {" \u2192"}
+                <Link className="text-link" href={card.href}>
+                  {card.linkText}
                 </Link>
               </article>
             ))}
@@ -296,16 +248,17 @@ export default function HomePage() {
       </section>
 
       {/* 5 ---- Destination strip (dark band) ---- */}
-      <section className="py-20 bg-navy-deep text-white">
-        <div className="mx-auto max-w-[var(--max-width-site)] px-5">
-          <SectionHead eyebrow="Populer hedefler" title="Global secenekleri karsilastirin" />
-          <div className="flex flex-col lg:flex-row gap-8 items-start">
-            {/* Left copy */}
-            <div className="lg:w-1/3 shrink-0">
-              <strong className="text-white text-lg font-semibold block mb-2">
-                Ulke rotanizi tek ekranda gorun
-              </strong>
-              <span className="text-white/70 text-sm leading-relaxed block mb-5">
+      <section id="global-secenekler" className="dark-band destinations-showcase">
+        <div className="container">
+          <SectionHead
+            eyebrow="Populer hedefler"
+            title="Global secenekleri karsilastirin"
+            description="Ulke, okul, butce ve kariyer hedeflerinizi birlikte degerlendirerek gercekci bir basvuru plani olusturuyoruz."
+          />
+          <div className="destination-strip" aria-label="Study Global populer ulke gorselleri">
+            <div className="destination-copy">
+              <strong>Ulke rotanizi tek ekranda gorun</strong>
+              <span>
                 Akademik hedef, butce, yasam tarzi ve vize surecine gore en guclu secenekleri
                 karsilastiriyoruz.
               </span>
@@ -313,33 +266,47 @@ export default function HomePage() {
                 Ulke Rotami Planla
               </Button>
             </div>
-
-            {/* Right scrolling tiles */}
-            <div className="flex-1 overflow-x-auto pb-3 -mr-5 lg:mr-0">
-              <div className="flex gap-4" style={{ minWidth: "max-content" }}>
+            <div className="destination-mini-viewport" aria-label="Kayan populer ulke kartlari">
+              <div className="destination-mini-grid">
+                {/* First set */}
                 {destinations.map((d) => {
-                  const inner = (
-                    <div className="relative w-28 h-36 rounded-[var(--radius)] overflow-hidden shrink-0 group">
-                      <Image
-                        src={d.image}
-                        alt={d.name}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/80 to-transparent" />
-                      <span className="absolute bottom-2 left-0 right-0 text-center text-xs font-semibold text-white">
-                        {d.name}
-                      </span>
-                    </div>
+                  const tile = (
+                    <>
+                      <Image src={d.image} alt={d.name} width={120} height={160} className="object-cover" />
+                      <span>{d.name}</span>
+                    </>
                   );
-
                   if (!d.slug) {
-                    return <div key={d.name}>{inner}</div>;
+                    return (
+                      <div key={d.name} className="destination-tile">
+                        {tile}
+                      </div>
+                    );
                   }
-
                   return (
-                    <Link key={d.name} href={`/ulkeler/${d.slug}`}>
-                      {inner}
+                    <Link key={d.name} href={`/ulkeler/${d.slug}`} className="destination-tile">
+                      {tile}
+                    </Link>
+                  );
+                })}
+                {/* Duplicate set for infinite scroll */}
+                {destinations.map((d) => {
+                  const tile = (
+                    <>
+                      <Image src={d.image} alt={d.name} width={120} height={160} className="object-cover" />
+                      <span>{d.name}</span>
+                    </>
+                  );
+                  if (!d.slug) {
+                    return (
+                      <div key={`dup-${d.name}`} className="destination-tile">
+                        {tile}
+                      </div>
+                    );
+                  }
+                  return (
+                    <Link key={`dup-${d.name}`} href={`/ulkeler/${d.slug}`} className="destination-tile">
+                      {tile}
                     </Link>
                   );
                 })}
@@ -353,35 +320,28 @@ export default function HomePage() {
       <StepList eyebrow="Surec" title="Nasil calisiyoruz?" items={steps} />
 
       {/* 7 ---- Testimonials ---- */}
-      <section className="py-20 bg-ivory">
-        <div className="mx-auto max-w-[var(--max-width-site)] px-5">
+      <section>
+        <div className="container">
           <SectionHead eyebrow="Basari hikayeleri" title="Ogrencilerimizin yolculuklari" />
           <TestimonialGrid items={testimonials} />
         </div>
       </section>
 
       {/* 8 ---- Content hub ---- */}
-      <section className="py-20 bg-white">
-        <div className="mx-auto max-w-[var(--max-width-site)] px-5">
+      <section className="content-hub">
+        <div className="container">
           <SectionHead eyebrow="Bilgi merkezi" title="Basvurudan sinava, kararinizi guclendiren icerikler">
-            <Button variant="outline" href="#">
-              Tum Icerikler
-            </Button>
+            <button className="btn btn-outline">Tum Icerikler</button>
           </SectionHead>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="hub-grid">
             {blogPreviews.map((b) => (
-              <article
-                key={b.title}
-                className="rounded-[var(--radius)] bg-ivory border border-border-soft p-6 flex flex-col"
-              >
-                <span className="text-[11px] font-bold uppercase tracking-widest text-study-red mb-2">
-                  {b.category}
-                </span>
-                <h3 className="text-base font-semibold text-navy-deep mb-2">{b.title}</h3>
-                <p className="text-sm text-muted-slate leading-relaxed mb-4 flex-1">{b.text}</p>
-                <span className="text-sm font-medium text-study-red cursor-default">
-                  Devamini Oku {"\u2192"}
-                </span>
+              <article key={b.title} className="hub-card">
+                <span>{b.category}</span>
+                <h3>{b.title}</h3>
+                <p>{b.text}</p>
+                <a className="text-link" href="#">
+                  Devamini Oku
+                </a>
               </article>
             ))}
           </div>

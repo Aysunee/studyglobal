@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Hero } from "@/components/sections/Hero";
 import { TrustStrip } from "@/components/sections/TrustStrip";
+import { BenefitGrid } from "@/components/sections/BenefitGrid";
 import { CTASection } from "@/components/sections/CTASection";
 import { CountryCardGrid } from "@/components/sections/CountryCardGrid";
 import { SectionHead } from "@/components/ui/SectionHead";
+import { StepList } from "@/components/sections/StepList";
 import { countries } from "@/data/countries";
 
 export const metadata: Metadata = {
@@ -53,6 +55,38 @@ const serviceCards = [
   },
 ];
 
+const rankingCards = [
+  {
+    title: "Universite Siralamasi",
+    text: "Ingiltere, Iskocya, Irlanda ve Galler'i de kapsayan en guncel universite siralamasi.",
+    linkText: "Siralamayi Gor",
+  },
+  {
+    title: "Bolumlere Gore Siralamalar",
+    text: "Guncel universite siralamarina gore hazirlanmis 50 farkli bolumde okul siralamasi.",
+    linkText: "Bolum Siralamalarini Gor",
+  },
+  {
+    title: "Burs Basvurulari",
+    text: "Ingiltere universiteleri icin en guncel burs basvurulari listesi.",
+    linkText: "Burs Bilgilerini Gor",
+  },
+];
+
+const advisoryBenefits = [
+  { title: "Okul Basari Analizi", text: "Hangi okul hangi bolumde daha basarili? Veriye dayali analiz yapiyoruz." },
+  { title: "Mezuniyet Sonrasi Destek", text: "Universitenin mezuniyet sonrasi size saglayacagi destegi degerlendiriyoruz." },
+  { title: "Bolum Uyumu", text: "Bolum dersleri sizin icin ideal mi? Mufredati birlikte inceliyoruz." },
+  { title: "Sehir & Maliyet", text: "Okul bulundugu sehir ve maliyetleri ile sizin icin ideal mi degerlendiriyoruz." },
+];
+
+const journeySteps = [
+  { title: "Kesfif & Danismanlik", text: "Hedefinizi ve universite seceneklerini netlestiririz." },
+  { title: "Basvuru & Evrak", text: "Okul listesi, UCAS basvurusu ve evrak hazirligini yonetiriz." },
+  { title: "Kabul & Vize", text: "Kabul sonrasi vize evraklari ve zamanlamayi planariz." },
+  { title: "Hazirlik & Ugurlama", text: "Konaklama, seyahat ve baslangic hazirliklarinda destek oluruz." },
+];
+
 function getFirstSentence(text: string): string {
   const match = text.match(/^[^.!?]+[.!?]/);
   return match ? match[0] : text;
@@ -87,33 +121,81 @@ export default function YurtDisiEgitimPage() {
       <TrustStrip metrics={trustMetrics} />
 
       {/* Service cards */}
-      <section id="hizmetler" className="py-20 bg-ivory">
-        <div className="mx-auto max-w-[var(--max-width-site)] px-5">
+      <section id="hizmetler">
+        <div className="container">
           <SectionHead
             eyebrow="Hizmetlerimiz"
             title="Ingiltere'de Egitim Hizmetleri"
             description="Lisans ve yuksek lisans basvurularindan burs sureclerine kadar tum asamalarda yaninizdayiz."
           />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid-3">
             {serviceCards.map((s) => (
-              <Link
-                key={s.slug}
-                href={`/hizmetler/${s.slug}`}
-                className="group rounded-[var(--radius)] bg-white p-6 shadow-card hover:shadow-lg transition-shadow block"
-              >
-                <h3 className="text-base font-semibold text-navy-deep mb-2 group-hover:text-study-red transition-colors">
-                  {s.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-muted-slate">{s.text}</p>
-              </Link>
+              <article key={s.slug} className="spotlight has-photo">
+                <h3>{s.title}</h3>
+                <p>{s.text}</p>
+                <a className="text-link" href="#">
+                  Detaylari Incele
+                </a>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Rankings & scholarships */}
+      <section>
+        <div className="container">
+          <SectionHead
+            eyebrow="Siralamalar & Burslar"
+            title="Universite Siralamalari ve Burs Firsatlari"
+          />
+          <div className="grid-3">
+            {rankingCards.map((r) => (
+              <article key={r.title} className="spotlight has-photo">
+                <h3>{r.title}</h3>
+                <p>{r.text}</p>
+                <a className="text-link" href="#">
+                  {r.linkText}
+                </a>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Advisory dark band */}
+      <section className="dark-band country-decision-section">
+        <div className="container">
+          <SectionHead
+            eyebrow="Danismanlik"
+            title="Basvuru Surecinde Nasil Yardimci Oluyoruz?"
+          />
+          <div className="decision-visual">
+            <div>
+              <strong>Ingiltere&apos;de 142 universite bulunmaktadir</strong>
+              <span>
+                Bu universitelerin tamami tercihinize uygun olmayabilir. Dogru
+                secimi birlikte yapalim.
+              </span>
+            </div>
+            <Link className="btn btn-primary" href="/iletisim">
+              Ucretsiz Danismanlik Al
+            </Link>
+          </div>
+          <div className="grid-4">
+            {advisoryBenefits.map((item) => (
+              <article key={item.title} className="benefit">
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
       {/* Country card grid with filters */}
-      <section className="py-20 bg-white">
-        <div className="mx-auto max-w-[var(--max-width-site)] px-5">
+      <section>
+        <div className="container">
           <SectionHead
             eyebrow="Ulkeler"
             title="Egitim icin populer ulkeler"
@@ -122,6 +204,12 @@ export default function YurtDisiEgitimPage() {
           <CountryCardGrid countries={countryCards} />
         </div>
       </section>
+
+      <StepList
+        eyebrow="Yolculuk"
+        title="Basvuru Yolculugu"
+        items={journeySteps}
+      />
 
       <CTASection
         title="Ingiltere'de egitim hayalinizi gercege donusturun"

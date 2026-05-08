@@ -15,39 +15,40 @@ type ServiceGridProps = {
 
 export function ServiceGrid({ services }: ServiceGridProps) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div className="service-visual-grid">
       {services.map((s, i) => {
         const isFirst = i === 0;
-        const card = (
-          <div
-            className={`group relative rounded-[var(--radius)] overflow-hidden ${
-              isFirst ? "sm:col-span-2 sm:row-span-2 min-h-[360px]" : "min-h-[220px]"
-            }`}
-          >
+        const cardClass = isFirst
+          ? "service-visual-card service-visual-card-large"
+          : "service-visual-card";
+
+        const inner = (
+          <>
             <Image
               src={s.image}
-              alt={s.title}
+              alt={`${s.title} hizmet gorseli`}
               fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/90 via-navy-deep/40 to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 p-5">
-              <span className="text-[11px] font-bold uppercase tracking-widest text-study-red mb-1 block">
-                {s.label}
-              </span>
-              <strong className="text-white text-base font-semibold block mb-1">{s.title}</strong>
-              <small className="text-white/70 text-xs leading-relaxed block">{s.text}</small>
+            <div className="service-visual-copy">
+              <span>{s.label}</span>
+              <strong>{s.title}</strong>
+              <small>{s.text}</small>
             </div>
-          </div>
+          </>
         );
 
         if (s.href === "#") {
-          return <div key={s.title} className={isFirst ? "sm:col-span-2 sm:row-span-2" : ""}>{card}</div>;
+          return (
+            <div key={s.title} className={cardClass}>
+              {inner}
+            </div>
+          );
         }
 
         return (
-          <Link key={s.title} href={s.href} className={isFirst ? "sm:col-span-2 sm:row-span-2" : ""}>
-            {card}
+          <Link key={s.title} href={s.href} className={cardClass}>
+            {inner}
           </Link>
         );
       })}

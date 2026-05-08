@@ -19,7 +19,7 @@ export function CTASection({ title, text }: CTASectionProps) {
             Ücretsiz Danışmanlık Al
           </Button>
           <Button variant="secondary" href={whatsappLink}>
-            WhatsApp
+            WhatsApp&apos;tan Hemen Yazin
           </Button>
         </div>
       </div>

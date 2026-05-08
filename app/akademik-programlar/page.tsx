@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Hero } from "@/components/sections/Hero";
 import { BenefitGrid } from "@/components/sections/BenefitGrid";
-import { SpotlightGrid } from "@/components/sections/SpotlightGrid";
 import { StepList } from "@/components/sections/StepList";
 import { CTASection } from "@/components/sections/CTASection";
 import { SectionHead } from "@/components/ui/SectionHead";
@@ -22,6 +22,7 @@ const programs = [
       "CV'nizi guclendiren uluslararasi stajlar",
       "Akademik ve profesyonel mentorluk",
     ],
+    visual: "program-internship",
   },
   {
     number: "02",
@@ -32,6 +33,7 @@ const programs = [
       "Kulturel etkilesim ve network firsati",
       "Alaninda uzman akademisyenlerden egitim",
     ],
+    visual: "program-summer",
   },
   {
     number: "03",
@@ -42,6 +44,7 @@ const programs = [
       "Is dunyasi simulasyonlari ve vaka calismalari",
       "Uluslararasi sertifika ve referans destegi",
     ],
+    visual: "program-leadership",
   },
 ];
 
@@ -77,29 +80,28 @@ export default function AkademikProgramlarPage() {
       />
 
       {/* Programs section */}
-      <section className="py-20 bg-ivory">
-        <div className="mx-auto max-w-[var(--max-width-site)] px-5">
+      <section>
+        <div className="container">
           <SectionHead eyebrow="Programlar" title="Kariyerinizi guclendiren akademik firsatlar" />
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {programs.map((p) => (
-              <div
+          <div className="grid-3">
+            {programs.map((p, i) => (
+              <article
                 key={p.title}
-                className="rounded-[var(--radius)] bg-white p-6 shadow-card hover:shadow-lg transition-shadow"
+                className={`card program-card${i === 0 ? " featured" : ""}`}
               >
-                <span className="inline-flex items-center justify-center size-10 rounded-full bg-navy-deep text-white text-sm font-bold mb-3">
-                  {p.number}
-                </span>
-                <h3 className="text-base font-semibold text-navy-deep mb-2">{p.title}</h3>
-                <p className="text-sm leading-relaxed text-muted-slate mb-4">{p.text}</p>
-                <ul className="space-y-1.5">
+                <div className={`program-visual ${p.visual}`} />
+                <span className="icon">{p.number}</span>
+                <h3>{p.title}</h3>
+                <p>{p.text}</p>
+                <ul>
                   {p.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2 text-sm text-muted-slate">
-                      <span className="size-1.5 rounded-full bg-study-red mt-1.5 shrink-0" />
-                      {f}
-                    </li>
+                    <li key={f}>{f}</li>
                   ))}
                 </ul>
-              </div>
+                <a className="text-link" href="#">
+                  Detaylari Incele
+                </a>
+              </article>
             ))}
           </div>
         </div>
@@ -112,11 +114,20 @@ export default function AkademikProgramlarPage() {
         dark
       />
 
-      <SpotlightGrid
-        eyebrow="Uygunluk"
-        title="Kimler icin uygun?"
-        items={audienceItems}
-      />
+      {/* Audience section */}
+      <section>
+        <div className="container">
+          <SectionHead eyebrow="Uygunluk" title="Kimler icin uygun?" />
+          <div className="grid-3">
+            {audienceItems.map((item) => (
+              <article key={item.title} className="card">
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <StepList
         eyebrow="Surec"
