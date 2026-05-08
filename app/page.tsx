@@ -11,6 +11,7 @@ import { StepList } from "@/components/sections/StepList";
 import { CTASection } from "@/components/sections/CTASection";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { Button } from "@/components/ui/Button";
+import { LetterTitle } from "@/components/ui/LetterTitle";
 
 export const metadata: Metadata = {
   title: "Study Global | Yurtdisi Egitim Danismanligi",
@@ -173,7 +174,7 @@ export default function HomePage() {
       {/* 1 ---- Hero ---- */}
       <HeroSlider>
         <div className="hero-copy">
-          <h1>Global egitim yolculugunu birlikte tasarlayalim</h1>
+          <LetterTitle text="Global eğitim yolculuğunu birlikte tasarlayalım" />
           <p>
             Universite basvurularindan dil okullarina, sinav hazirligindan akademik programlara ve
             ulke secimine kadar her adimda yaninizdayiz. Dogru tercih, guclu basvuru, basarili
