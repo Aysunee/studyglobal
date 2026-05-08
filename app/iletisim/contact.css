@@ -182,7 +182,7 @@ textarea {
   bottom: -1.5%;
   left: calc(var(--i) * var(--strip-width));
   width: calc(var(--strip-width) + 0.42%);
-  background-image: url("./study-global-flag.png");
+  background-image: url("/study-global-flag.png");
   background-repeat: no-repeat;
   background-size: calc(var(--strip-count) * 100%) 100%;
   background-position: var(--bg-x) center;
