@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
-import Image from "next/image";
+import { useEffect, useRef, useState, useCallback, type ReactNode } from "react";
 
 const slides = [
   "/assets/hero-study-desk.jpg",
@@ -12,20 +11,40 @@ const slides = [
 ];
 
 const INTERVAL = 6400;
+const TRANSITION_DURATION = 1520;
 
 type HeroSliderProps = {
   children: ReactNode;
 };
 
 export function HeroSlider({ children }: HeroSliderProps) {
-  const [current, setCurrent] = useState(0);
+  const [active, setActive] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [bgImage, setBgImage] = useState(slides[0]);
+  const [nextImage, setNextImage] = useState("");
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const transitionTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const prefersReducedMotion = useRef(false);
+  const activeRef = useRef(0);
+
+  const setSlide = useCallback((index: number) => {
+    if (index === activeRef.current || isTransitioning) return;
+
+    activeRef.current = index;
+    setActive(index);
+    setNextImage(slides[index]);
+    setIsTransitioning(true);
+
+    transitionTimerRef.current = setTimeout(() => {
+      setBgImage(slides[index]);
+      setIsTransitioning(false);
+      setNextImage("");
+    }, TRANSITION_DURATION);
+  }, [isTransitioning]);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
     prefersReducedMotion.current = mq.matches;
-
     const handler = (e: MediaQueryListEvent) => {
       prefersReducedMotion.current = e.matches;
     };
@@ -33,22 +52,28 @@ export function HeroSlider({ children }: HeroSliderProps) {
     return () => mq.removeEventListener("change", handler);
   }, []);
 
+  // Preload images
+  useEffect(() => {
+    slides.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
+
   useEffect(() => {
     function start() {
       if (timerRef.current) clearInterval(timerRef.current);
       timerRef.current = setInterval(() => {
         if (!prefersReducedMotion.current) {
-          setCurrent((prev) => (prev + 1) % slides.length);
+          const next = (activeRef.current + 1) % slides.length;
+          setSlide(next);
         }
       }, INTERVAL);
     }
 
     function handleVisibility() {
-      if (document.hidden) {
-        if (timerRef.current) clearInterval(timerRef.current);
-      } else {
-        start();
-      }
+      if (timerRef.current) clearInterval(timerRef.current);
+      if (!document.hidden) start();
     }
 
     start();
@@ -56,31 +81,30 @@ export function HeroSlider({ children }: HeroSliderProps) {
 
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
+      if (transitionTimerRef.current) clearTimeout(transitionTimerRef.current);
       document.removeEventListener("visibilitychange", handleVisibility);
     };
-  }, []);
+  }, [setSlide]);
+
+  const sceneIndex = active % slides.length;
 
   return (
-    <section className="relative bg-navy-deep text-white pt-32 pb-20 min-h-[600px] overflow-hidden">
-      {/* Background slides */}
-      {slides.map((src, i) => (
-        <Image
-          key={src}
-          src={src}
-          alt=""
-          fill
-          priority={i === 0}
-          className={`object-cover transition-opacity duration-1000 ${
-            i === current ? "opacity-30" : "opacity-0"
-          }`}
-        />
-      ))}
-
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-navy-deep/90 via-navy/70 to-navy-deep/80 pointer-events-none" />
+    <section className={`hero${isTransitioning ? " is-transitioning" : ""}`}>
+      {/* Background layers matching old site structure */}
+      <div
+        className={`hero-bg${!isTransitioning ? " is-live" : ""}`}
+        data-scene={String(sceneIndex)}
+        style={{ backgroundImage: `url("${bgImage}")` }}
+      />
+      <div
+        className="hero-bg-next"
+        data-scene={String(sceneIndex)}
+        style={nextImage ? { backgroundImage: `url("${nextImage}")` } : undefined}
+      />
+      <div className="hero-overlay" />
 
       {/* Content */}
-      <div className="relative mx-auto max-w-[var(--max-width-site)] px-5">
+      <div className="container">
         {children}
       </div>
     </section>
