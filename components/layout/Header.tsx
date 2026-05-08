@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -19,10 +19,30 @@ const navLinks = [
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const [isTop, setIsTop] = useState(true);
+  const [isHidden, setIsHidden] = useState(false);
   const pathname = usePathname();
 
+  const updateHeaderState = useCallback(() => {
+    const scrollY = window.scrollY;
+    setIsTop(scrollY < 120);
+    setIsHidden(scrollY > 180 && !open);
+  }, [open]);
+
+  useEffect(() => {
+    updateHeaderState();
+    window.addEventListener("scroll", updateHeaderState, { passive: true });
+    return () => window.removeEventListener("scroll", updateHeaderState);
+  }, [updateHeaderState]);
+
+  const headerClass = [
+    "site-header",
+    isTop ? "is-top" : "",
+    isHidden ? "is-hidden" : "",
+  ].filter(Boolean).join(" ");
+
   return (
-    <header className="site-header">
+    <header className={headerClass}>
       <div className="nav-wrap">
         <Link className="brand" href="/" aria-label="Study Global ana sayfa">
           <Image src="/logo.png" alt="Study Global Yurtdışı Eğitim Danışmanlığı" width={140} height={40} priority />
