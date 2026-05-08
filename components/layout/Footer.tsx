@@ -3,70 +3,72 @@ import Image from "next/image";
 
 const footerLinks = [
   { label: "Üniversite", href: "/universite" },
+  { label: "Yüksek Lisans", href: null },
+  { label: "Dil Okulları", href: null },
   { label: "Akademik Programlar", href: "/akademik-programlar" },
   { label: "Sınavlar", href: "/sinavlar" },
   { label: "Yurt Dışı Eğitim", href: "/yurt-disi-egitim" },
+  { label: "Blog", href: null },
   { label: "İletişim", href: "/iletisim" },
+  { label: "Gizlilik Politikası", href: null },
+  { label: "KVKK", href: null },
+  { label: "Kullanım Şartları", href: null },
 ];
 
 export function Footer() {
   return (
-    <footer className="bg-navy-deep text-white/80 pt-16 pb-8">
-      <div className="mx-auto max-w-[var(--max-width-site)] px-6 grid grid-cols-1 md:grid-cols-3 gap-12">
-        {/* Col 1 - Logo & Description */}
-        <div className="space-y-4">
+    <footer className="footer">
+      <div className="container footer-grid">
+        <div>
           <Image
+            className="footer-logo"
             src="/logo.png"
             alt="Study Global"
             width={140}
             height={40}
-            className="brightness-0 invert"
           />
-          <p className="text-sm leading-relaxed">
-            Study Global, yurt dışında eğitim almak isteyen öğrencilere profesyonel
-            danışmanlık hizmeti sunan uluslararası bir eğitim danışmanlık firmasıdır.
+          <p>
+            Study Global, öğrencilerin hedeflerine en uygun ülke, program ve başvuru
+            stratejisini belirlemelerine yardımcı olan yurtdışı eğitim danışmanlığı
+            markasıdır.
           </p>
         </div>
 
-        {/* Col 2 - Contact */}
-        <div className="space-y-4">
-          <h3 className="text-white font-semibold text-base">İletişim</h3>
-          <address className="not-italic text-sm space-y-2">
-            <p>
-              Büyükdere Cad. No: 185, Kanyon Ofis Bloğu,
-              <br />
-              Levent, 34394 İstanbul
-            </p>
-            <p>
-              <a href="tel:+902121234567" className="hover:text-white transition-colors">
-                +90 212 123 45 67
-              </a>
-            </p>
-            <p>
-              <a href="mailto:info@studyglobal.com" className="hover:text-white transition-colors">
-                info@studyglobal.com
-              </a>
-            </p>
-          </address>
+        <div>
+          <h3>İstanbul Ofis</h3>
+          <p>
+            Nişantaşı Mah. Teşvikiye Cd.<br />
+            No: 45/12, Şişli / İstanbul
+          </p>
+          <p>
+            Telefon<br />
+            +90 212 123 45 67
+          </p>
+          <p>
+            E-posta<br />
+            info@studyglobal.com.tr
+          </p>
         </div>
 
-        {/* Col 3 - Navigation */}
-        <div className="space-y-4">
-          <h3 className="text-white font-semibold text-base">Sayfalar</h3>
-          <ul className="space-y-2 text-sm">
-            {footerLinks.map((link) => (
-              <li key={link.href}>
-                <Link href={link.href} className="hover:text-white transition-colors">
+        <div>
+          <h3>Bağlantılar</h3>
+          <div className="footer-links">
+            {footerLinks.map((link) =>
+              link.href ? (
+                <Link key={link.label} href={link.href}>
                   {link.label}
                 </Link>
-              </li>
-            ))}
-          </ul>
+              ) : (
+                <span key={link.label} style={{ opacity: 0.5, cursor: "not-allowed" }}>
+                  {link.label}
+                </span>
+              )
+            )}
+          </div>
         </div>
       </div>
 
-      {/* Copyright */}
-      <div className="mx-auto max-w-[var(--max-width-site)] px-6 mt-12 pt-6 border-t border-white/10 text-center text-xs text-white/50">
+      <div className="container copyright">
         &copy; {new Date().getFullYear()} Study Global. Tüm hakları saklıdır.
       </div>
     </footer>

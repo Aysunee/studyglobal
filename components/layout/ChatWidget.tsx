@@ -34,15 +34,20 @@ const mockResponses: Record<string, string> = {
 export function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { role: "bot", text: "Merhaba! Size nasıl yardımcı olabilirim?" },
+    {
+      role: "bot",
+      text: "Merhaba! Study Global Asistan'a hoş geldiniz. Size program, sınav veya ülke seçimi konusunda yardımcı olabilirim.",
+    },
   ]);
   const [input, setInput] = useState("");
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const bodyRef = useRef<HTMLDivElement>(null);
 
   const isFirstMessage = messages.length === 1;
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (bodyRef.current) {
+      bodyRef.current.scrollTop = bodyRef.current.scrollHeight;
+    }
   }, [messages]);
 
   function addBotResponse(userText: string) {
@@ -70,89 +75,54 @@ export function ChatWidget() {
   }
 
   return (
-    <>
-      {/* Toggle button */}
-      <button
-        type="button"
-        aria-label="Sohbet aç/kapat"
-        onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-navy-deep text-white rounded-full shadow-card flex items-center justify-center transition-transform hover:scale-105 cursor-pointer"
-      >
-        {isOpen ? (
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="18" y1="6" x2="6" y2="18" />
-            <line x1="6" y1="6" x2="18" y2="18" />
-          </svg>
-        ) : (
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-          </svg>
-        )}
-      </button>
-
-      {/* Chat panel */}
+    <div className="chat-widget">
       <div
-        className={`fixed bottom-24 right-6 z-50 w-[360px] max-h-[520px] bg-white rounded-2xl shadow-card flex flex-col overflow-hidden transition-all duration-300 origin-bottom-right ${
-          isOpen ? "scale-100 opacity-100" : "scale-95 opacity-0 pointer-events-none"
-        }`}
+        className={`chat-panel${isOpen ? " active" : ""}`}
+        data-chat-panel=""
+        style={{ display: isOpen ? undefined : "none" }}
       >
-        {/* Header */}
-        <div className="bg-navy-deep text-white px-5 py-4">
-          <p className="font-semibold text-sm">Study Global Asistan</p>
-          <p className="text-xs text-white/60">Genellikle birkaç dakika içinde yanıt verir</p>
+        <div className="chat-head">
+          <strong>Study Global Asistan</strong>
+          <span>Programlar, sınavlar ve ülke seçimi hakkında sorabilirsiniz.</span>
         </div>
 
-        {/* Messages */}
-        <div className="flex-1 overflow-y-auto p-4 space-y-3 min-h-[200px]">
+        <div className="chat-body" data-chat-body="" ref={bodyRef}>
           {messages.map((msg, i) => (
-            <div
-              key={i}
-              className={`max-w-[85%] px-4 py-2.5 rounded-2xl text-sm leading-relaxed ${
-                msg.role === "bot"
-                  ? "bg-ivory text-navy rounded-bl-sm"
-                  : "bg-study-red text-white rounded-br-sm ml-auto"
-              }`}
-            >
+            <div key={i} className={`message ${msg.role}`}>
               {msg.text}
             </div>
           ))}
 
-          {/* Quick replies */}
           {isFirstMessage && (
-            <div className="flex flex-wrap gap-2 pt-2">
+            <div className="quick-replies">
               {quickReplies.map((qr) => (
-                <button
-                  key={qr}
-                  type="button"
-                  onClick={() => handleQuickReply(qr)}
-                  className="px-3 py-1.5 text-xs border border-border-soft rounded-full text-navy hover:bg-navy hover:text-white transition-colors cursor-pointer"
-                >
+                <button key={qr} type="button" data-quick-reply="" onClick={() => handleQuickReply(qr)}>
                   {qr}
                 </button>
               ))}
             </div>
           )}
-
-          <div ref={messagesEndRef} />
         </div>
 
-        {/* Input */}
-        <form onSubmit={handleSubmit} className="border-t border-border-soft p-3 flex gap-2">
+        <form className="chat-form" data-chat-form="" onSubmit={handleSubmit}>
           <input
+            data-chat-input=""
+            placeholder="Mesajınızı yazın..."
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Mesajınızı yazın..."
-            className="flex-1 text-sm px-3 py-2 rounded-lg bg-ivory border border-border-soft focus:outline-none focus:border-study-red transition-colors"
           />
-          <button
-            type="submit"
-            className="px-4 py-2 bg-study-red text-white text-sm font-semibold rounded-lg hover:bg-soft-red transition-colors cursor-pointer"
-          >
-            Gönder
-          </button>
+          <button type="submit">&#10148;</button>
         </form>
       </div>
-    </>
+
+      <button
+        className="chat-toggle"
+        data-chat-toggle=""
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        &#10022; <span>Study Global Asistan</span>
+      </button>
+    </div>
   );
 }

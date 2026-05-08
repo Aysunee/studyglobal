@@ -4,7 +4,6 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Button } from "@/components/ui/Button";
 
 const navLinks = [
   { label: "Ana Sayfa", href: "/" },
@@ -23,107 +22,46 @@ export function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="fixed top-3.5 left-0 right-0 z-50 px-4">
-      <nav className="mx-auto max-w-[var(--max-width-site)] bg-white/90 backdrop-blur-md rounded-2xl shadow-card px-6 py-3 flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="shrink-0">
-          <Image src="/logo.png" alt="Study Global" width={140} height={40} priority />
+    <header className="site-header">
+      <div className="nav-wrap">
+        <Link className="brand" href="/" aria-label="Study Global ana sayfa">
+          <Image src="/logo.png" alt="Study Global Yurtdışı Eğitim Danışmanlığı" width={140} height={40} priority />
         </Link>
 
-        {/* Desktop nav */}
-        <ul className="hidden lg:flex items-center gap-1 text-sm">
+        <nav className={`nav-links${open ? " active" : ""}`} data-nav="">
           {navLinks.map((link) =>
             link.href ? (
-              <li key={link.label}>
-                <Link
-                  href={link.href}
-                  className={`px-3 py-2 rounded-lg transition-colors ${
-                    pathname === link.href
-                      ? "text-study-red font-semibold"
-                      : "text-navy hover:text-study-red"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              </li>
+              <Link
+                key={link.label}
+                href={link.href}
+                className={`nav-link${pathname === link.href ? " active" : ""}`}
+                onClick={() => setOpen(false)}
+              >
+                {link.label}
+              </Link>
             ) : (
-              <li key={link.label}>
-                <span className="px-3 py-2 text-muted-slate/50 cursor-not-allowed select-none">
-                  {link.label}
-                </span>
-              </li>
+              <span key={link.label} className="nav-link" style={{ opacity: 0.5, cursor: "not-allowed" }}>
+                {link.label}
+              </span>
             )
           )}
-        </ul>
+        </nav>
 
-        {/* CTA + Hamburger */}
-        <div className="flex items-center gap-3">
-          <Button href="/iletisim" className="hidden lg:inline-flex">
-            Danışmanlık Al
-          </Button>
-
-          {/* Hamburger */}
+        <div className="nav-actions">
+          <Link href="/iletisim" className="btn btn-primary nav-cta">
+            Ücretsiz Ön Görüşme
+          </Link>
           <button
-            type="button"
-            aria-label="Menüyü aç/kapat"
-            className="lg:hidden relative w-8 h-8 flex flex-col items-center justify-center gap-1.5 cursor-pointer"
+            className={`hamburger${open ? " active" : ""}`}
+            data-hamburger=""
+            aria-label="Menüyü aç"
             onClick={() => setOpen(!open)}
           >
-            <span
-              className={`block h-0.5 w-6 bg-navy rounded transition-all duration-300 ${
-                open ? "translate-y-2 rotate-45" : ""
-              }`}
-            />
-            <span
-              className={`block h-0.5 w-6 bg-navy rounded transition-all duration-300 ${
-                open ? "opacity-0" : ""
-              }`}
-            />
-            <span
-              className={`block h-0.5 w-6 bg-navy rounded transition-all duration-300 ${
-                open ? "-translate-y-2 -rotate-45" : ""
-              }`}
-            />
+            <span></span>
+            <span></span>
+            <span></span>
           </button>
         </div>
-      </nav>
-
-      {/* Mobile menu */}
-      <div
-        className={`lg:hidden mx-auto max-w-[var(--max-width-site)] mt-2 bg-white/95 backdrop-blur-md rounded-2xl shadow-card overflow-hidden transition-all duration-300 ${
-          open ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
-        }`}
-      >
-        <ul className="flex flex-col p-4 text-sm">
-          {navLinks.map((link) =>
-            link.href ? (
-              <li key={link.label}>
-                <Link
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className={`block px-4 py-3 rounded-lg transition-colors ${
-                    pathname === link.href
-                      ? "text-study-red font-semibold"
-                      : "text-navy hover:text-study-red"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ) : (
-              <li key={link.label}>
-                <span className="block px-4 py-3 text-muted-slate/50 cursor-not-allowed select-none">
-                  {link.label}
-                </span>
-              </li>
-            )
-          )}
-          <li className="mt-2">
-            <Button href="/iletisim" className="w-full">
-              Danışmanlık Al
-            </Button>
-          </li>
-        </ul>
       </div>
     </header>
   );
