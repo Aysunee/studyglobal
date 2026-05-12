@@ -2,8 +2,8 @@ import { SectionHead } from "@/components/ui/SectionHead";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 
 type BenefitGridProps = {
-  eyebrow: string;
-  title: string;
+  eyebrow?: string;
+  title?: string;
   description?: string;
   items: { title: string; text: string }[];
   dark?: boolean;
@@ -12,7 +12,9 @@ type BenefitGridProps = {
 export function BenefitGrid({ eyebrow, title, description, items, dark = false }: BenefitGridProps) {
   const content = (
     <div className="container">
-      <SectionHead eyebrow={eyebrow} title={title} description={description} />
+      {(eyebrow || title || description) && (
+        <SectionHead eyebrow={eyebrow ?? ""} title={title ?? ""} description={description} />
+      )}
 
       <div className="grid-4">
         {items.map((item) => (
