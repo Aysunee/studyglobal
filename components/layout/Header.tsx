@@ -152,29 +152,18 @@ export function Header() {
     <header className={headerClass}>
       <div className="nav-wrap" onMouseLeave={hideBubble}>
         <nav className={`nav-links${open ? " open" : ""}`} data-nav="">
-          {navLinks.map((link) =>
-            link.href ? (
-              <Link
-                key={link.label}
-                href={link.href}
-                className={`nav-link${pathname === link.href ? " active" : ""}`}
-                onClick={() => setOpen(false)}
-                onMouseEnter={(e) => showBubble(link.label, e.currentTarget)}
-                onFocus={(e) => showBubble(link.label, e.currentTarget)}
-              >
-                {link.label}
-              </Link>
-            ) : (
-              <span
-                key={link.label}
-                className="nav-link"
-                style={{ opacity: 0.5, cursor: "not-allowed" }}
-                onMouseEnter={(e) => showBubble(link.label, e.currentTarget)}
-              >
-                {link.label}
-              </span>
-            )
-          )}
+          {navLinks.map((link) => (
+            <Link
+              key={link.label}
+              href={link.href}
+              className={`nav-link${pathname === link.href ? " active" : ""}`}
+              onClick={() => setOpen(false)}
+              onMouseEnter={(e) => showBubble(link.label, e.currentTarget)}
+              onFocus={(e) => showBubble(link.label, e.currentTarget)}
+            >
+              {link.label}
+            </Link>
+          ))}
         </nav>
 
         <div className="nav-actions">
