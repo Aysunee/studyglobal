@@ -6,59 +6,59 @@ import { CTASection } from "@/components/sections/CTASection";
 import { SectionHead } from "@/components/ui/SectionHead";
 
 export const metadata: Metadata = {
-  title: "Sinavlar | Study Global",
+  title: "Sınavlar | Study Global",
   description:
-    "IELTS, OET, SAT, AP, TMUA ve Cambridge Exams icin Study Global sinav danismanligi.",
+    "IELTS, OET, SAT, AP, TMUA ve Cambridge Exams için Study Global sınav danışmanlığı.",
 };
 
 const examCards = [
-  { icon: "T", title: "TARA", text: "Akademik yonelim ve basvuru hedeflerini netlestiren degerlendirme sureci.", visual: "exam-tara" },
-  { icon: "M", title: "TMUA", text: "Matematik ve istatistik becerilerinizi olcen admission testi.", visual: "exam-tmua" },
-  { icon: "C", title: "CENTs", text: "Okul ve program hedeflerine gore desteklenen akademik sinav hazirligi.", visual: "exam-cents" },
-  { icon: "AP", title: "AP", text: "Universite kredisi ve guclu akademik profil icin Advanced Placement.", visual: "exam-ap" },
-  { icon: "S", title: "SAT", text: "Kolej basvurularinda kabul edilen akademik yeterlilik sinavi.", visual: "exam-sat" },
-  { icon: "I", title: "IELTS", text: "Uluslararasi gecerllige sahip Ingilizce yeterlilik sinavi.", visual: "exam-ielts" },
-  { icon: "O", title: "OET", text: "Saglik profesyonelleri icin Ingilizce yeterlilik sinavi.", visual: "exam-oet" },
-  { icon: "OX", title: "Oxford Test of English", text: "Esnek yapisiyla Ingilizce yeterliligini olcen modern sinav alternatifi.", visual: "exam-oxford" },
-  { icon: "CE", title: "Cambridge Exams", text: "Akademik ve profesyonel Ingilizce yeterliligi icin guclu sinav ailesi.", visual: "exam-cambridge" },
+  { icon: "T", title: "TARA", text: "Akademik yönelim ve başvuru hedeflerini netleştiren değerlendirme süreci.", visual: "exam-tara" },
+  { icon: "M", title: "TMUA", text: "Matematik ve istatistik becerilerinizi ölçen admission testi.", visual: "exam-tmua" },
+  { icon: "C", title: "CENTs", text: "Okul ve program hedeflerine göre desteklenen akademik sınav hazırlığı.", visual: "exam-cents" },
+  { icon: "AP", title: "AP", text: "Üniversite kredisi ve güçlü akademik profil için Advanced Placement.", visual: "exam-ap" },
+  { icon: "S", title: "SAT", text: "Kolej başvurularında kabul edilen akademik yeterlilik sınavı.", visual: "exam-sat" },
+  { icon: "I", title: "IELTS", text: "Uluslararası geçerliliğe sahip İngilizce yeterlilik sınavı.", visual: "exam-ielts" },
+  { icon: "O", title: "OET", text: "Sağlık profesyonelleri için İngilizce yeterlilik sınavı.", visual: "exam-oet" },
+  { icon: "OX", title: "Oxford Test of English", text: "Esnek yapısıyla İngilizce yeterliliğini ölçen modern sınav alternatifi.", visual: "exam-oxford" },
+  { icon: "CE", title: "Cambridge Exams", text: "Akademik ve profesyonel İngilizce yeterliliği için güçlü sınav ailesi.", visual: "exam-cambridge" },
 ];
 
 const strategicExams = [
-  { title: "IELTS", text: "Dil yeterliligi, basvuru ve vize surecleri icin kritik skor plani." },
-  { title: "SAT", text: "Amerika hedefli lisans basvurularinda akademik profil destegi." },
-  { title: "AP", text: "Universite kredisi ve secici okullar icin ileri akademik gosterge." },
-  { title: "TMUA", text: "Matematik agirlikli bolumlerde guclu kabul stratejisi." },
+  { title: "IELTS", text: "Dil yeterliliği, başvuru ve vize süreçleri için kritik skor planı." },
+  { title: "SAT", text: "Amerika hedefli lisans başvurularında akademik profil desteği." },
+  { title: "AP", text: "Üniversite kredisi ve seçici okullar için ileri akademik gösterge." },
+  { title: "TMUA", text: "Matematik ağırlıklı bölümlerde güçlü kabul stratejisi." },
 ];
 
 const prepSteps = [
-  { title: "Seviye Analizi", text: "Mevcut skor potansiyelinizi ve zaman cizelgenizi degerlendiririz." },
-  { title: "Plan Olusturma", text: "Haftalik hedefler ve deneme takvimiyle ilerleriz." },
-  { title: "Materyal & Deneme", text: "Dogru kaynak ve olcum sistemiyle performansi takip ederiz." },
-  { title: "Basvuru & Kayit Destegi", text: "Sinav kaydi, tarih secimi ve skor kullaniminda destek oluruz." },
+  { title: "Seviye Analizi", text: "Mevcut skor potansiyelinizi ve zaman çizelgenizi değerlendiririz." },
+  { title: "Plan Oluşturma", text: "Haftalık hedefler ve deneme takvimiyle ilerleriz." },
+  { title: "Materyal & Deneme", text: "Doğru kaynak ve ölçüm sistemiyle performansı takip ederiz." },
+  { title: "Başvuru & Kayıt Desteği", text: "Sınav kaydı, tarih seçimi ve skor kullanımında destek oluruz." },
 ];
 
 const whyUsItems = [
-  { title: "Uzman Rehberlik", text: "Sinav ve okul hedeflerini ayni stratejide bulusturuz." },
-  { title: "Bireysel Yol Haritasi", text: "Seviyenize gore gercekci bir calisma plani kurariz." },
-  { title: "Sinav Stratejisi", text: "Skor hedefi, sure yonetimi ve tekrar planini netlestiririz." },
-  { title: "Hizli Destek", text: "Takvim ve basvuru sorularinizda hizli yonlendirme saglariz." },
+  { title: "Uzman Rehberlik", text: "Sınav ve okul hedeflerini aynı stratejide buluştururuz." },
+  { title: "Bireysel Yol Haritası", text: "Seviyenize göre gerçekçi bir çalışma planı kurarız." },
+  { title: "Sınav Stratejisi", text: "Skor hedefi, süre yönetimi ve tekrar planını netleştiririz." },
+  { title: "Hızlı Destek", text: "Takvim ve başvuru sorularınızda hızlı yönlendirme sağlarız." },
 ];
 
 export default function SinavlarPage() {
   return (
     <main>
       <Hero
-        eyebrow="Sinav danismanligi"
-        title="Sinav hazirligini dogru stratejiyle yonetin"
-        text="Yurt disinda egitim, lisans ve yuksek lisans basvurularinda ihtiyac duydugunuz uluslararasi sinavlar icin dogru planlama, etkili calisma stratejileri ve basvuru destegi sagliyoruz."
-        primaryCta={{ label: "Sinav Stratejimi Olustur", href: "/iletisim" }}
+        eyebrow="Sınav danışmanlığı"
+        title="Sınav hazırlığını doğru stratejiyle yönetin"
+        text="Yurt dışında eğitim, lisans ve yüksek lisans başvurularında ihtiyaç duyduğunuz uluslararası sınavlar için doğru planlama, etkili çalışma stratejileri ve başvuru desteği sağlıyoruz."
+        primaryCta={{ label: "Sınav Stratejimi Oluştur", href: "/iletisim" }}
         secondaryCta={{ label: "WhatsApp'tan Sor", href: "https://wa.me/" }}
       />
 
       {/* Exam categories grid */}
       <section>
         <div className="container">
-          <SectionHead eyebrow="Kategoriler" title="Sinav kategorileri" />
+          <SectionHead eyebrow="Kategoriler" title="Sınav kategorileri" />
           <div className="exam-grid">
             {examCards.map((exam) => (
               <article key={exam.title} className="exam-card has-visual">
@@ -67,7 +67,7 @@ export default function SinavlarPage() {
                 <h3>{exam.title}</h3>
                 <p>{exam.text}</p>
                 <a className="text-link" href="#">
-                  Detayli Incele
+                  Detaylı İncele
                 </a>
               </article>
             ))}
@@ -78,7 +78,7 @@ export default function SinavlarPage() {
       {/* Strategic exams - dark band */}
       <section className="dark-band">
         <div className="container">
-          <SectionHead eyebrow="One cikanlar" title="Stratejik sinav rotalari" />
+          <SectionHead eyebrow="Öne çıkanlar" title="Stratejik sınav rotaları" />
           <div className="grid-4">
             {strategicExams.map((exam) => (
               <article key={exam.title} className="spotlight exam-photo">
@@ -91,20 +91,20 @@ export default function SinavlarPage() {
       </section>
 
       <StepList
-        eyebrow="Hazirlik"
-        title="Hazirlik sureci"
+        eyebrow="Hazırlık"
+        title="Hazırlık süreci"
         items={prepSteps}
       />
 
       <BenefitGrid
         eyebrow="Neden biz?"
-        title="Sinav hedefiniz icin net rehberlik"
+        title="Sınav hedefiniz için net rehberlik"
         items={whyUsItems}
       />
 
       <CTASection
-        title="Sinav stratejinizi bugun netlestirin"
-        text="Hedef skorunuza uygun plani birlikte olusturalim."
+        title="Sınav stratejinizi bugün netleştirin"
+        text="Hedef skorunuza uygun planı birlikte oluşturalım."
       />
     </main>
   );

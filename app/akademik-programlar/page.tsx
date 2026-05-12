@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Hero } from "@/components/sections/Hero";
 import { BenefitGrid } from "@/components/sections/BenefitGrid";
 import { StepList } from "@/components/sections/StepList";
@@ -9,63 +8,63 @@ import { SectionHead } from "@/components/ui/SectionHead";
 export const metadata: Metadata = {
   title: "Akademik Programlar | Study Global",
   description:
-    "Study Global Akademik Programlar ile staj, proje, yaz okulu ve global akademik deneyim firsatlari.",
+    "Study Global Akademik Programlar ile staj, proje, yaz okulu ve global akademik deneyim fırsatları.",
 };
 
 const programs = [
   {
     number: "01",
-    title: "Staj + Proje Calismalari",
-    text: "Uluslararasi kurumlarda staj ve proje firsatlariyla pratik deneyim kazanin, kariyerinizde one gecin.",
+    title: "Staj + Proje Çalışmaları",
+    text: "Uluslararası kurumlarda staj ve proje fırsatlarıyla pratik deneyim kazanın, kariyerinizde öne geçin.",
     features: [
-      "Alaninizda gercek proje deneyimi",
-      "CV'nizi guclendiren uluslararasi stajlar",
+      "Alanınızda gerçek proje deneyimi",
+      "CV'nizi güçlendiren uluslararası stajlar",
       "Akademik ve profesyonel mentorluk",
     ],
     visual: "program-internship",
   },
   {
     number: "02",
-    title: "Akademik Yaz Okullari",
-    text: "Dunyanin onde gelen universitelerinde yaz doneminde akademik programlara katilin, global bakis acisi kazanin.",
+    title: "Akademik Yaz Okulları",
+    text: "Dünyanın önde gelen üniversitelerinde yaz döneminde akademik programlara katılın, global bakış açısı kazanın.",
     features: [
-      "Lisans kredisi ve sertifika imkani",
-      "Kulturel etkilesim ve network firsati",
-      "Alaninda uzman akademisyenlerden egitim",
+      "Lisans kredisi ve sertifika imkanı",
+      "Kültürel etkileşim ve network fırsatı",
+      "Alanında uzman akademisyenlerden eğitim",
     ],
     visual: "program-summer",
   },
   {
     number: "03",
     title: "GAC - GBC - WLE",
-    text: "Global Academic Camp, Global Business Camp ve Work & Leadership Experience programlari ile liderlik ve is dunyasina hazirlanin.",
+    text: "Global Academic Camp, Global Business Camp ve Work & Leadership Experience programları ile liderlik ve iş dünyasına hazırlanın.",
     features: [
-      "Liderlik ve takim calismasi gelisimi",
-      "Is dunyasi simulasyonlari ve vaka calismalari",
-      "Uluslararasi sertifika ve referans destegi",
+      "Liderlik ve takım çalışması gelişimi",
+      "İş dünyası simulasyonları ve vaka çalışmaları",
+      "Uluslararası sertifika ve referans desteği",
     ],
     visual: "program-leadership",
   },
 ];
 
 const valueItems = [
-  { title: "Akademik Zenginlesme", text: "Basvuru profilinizi guclendiren program secenekleri." },
-  { title: "Uluslararasi Deneyim", text: "Kampus, kurum ve global network deneyimi." },
-  { title: "Kariyer ve Portfolyo Guclendirme", text: "CV, portfolyo ve akademik hikayenizi destekleyen cikti." },
-  { title: "Uzman Rehberlik", text: "Program secimi ve basvuru sureci icin uctan uca danismanlik." },
+  { title: "Akademik Zenginleşme", text: "Başvuru profilinizi güçlendiren program seçenekleri." },
+  { title: "Uluslararası Deneyim", text: "Kampüs, kurum ve global network deneyimi." },
+  { title: "Kariyer ve Portfolyo Güçlendirme", text: "CV, portfolyo ve akademik hikayenizi destekleyen çıktı." },
+  { title: "Uzman Rehberlik", text: "Program seçimi ve başvuru süreci için uçtan uca danışmanlık." },
 ];
 
 const audienceItems = [
-  { title: "Lise Ogrencileri", text: "Universite basvurusu oncesi akademik profilini guclendirmek isteyenler." },
-  { title: "Universite Ogrencileri", text: "Alan deneyimi ve uluslararasi referans kazanmak isteyenler." },
-  { title: "Hedef Odakli Adaylar", text: "Belirli bir kariyer veya okul hedefi icin stratejik hazirlik yapanlar." },
+  { title: "Lise Öğrencileri", text: "Üniversite başvurusu öncesi akademik profilini güçlendirmek isteyenler." },
+  { title: "Üniversite Öğrencileri", text: "Alan deneyimi ve uluslararası referans kazanmak isteyenler." },
+  { title: "Hedef Odaklı Adaylar", text: "Belirli bir kariyer veya okul hedefi için stratejik hazırlık yapanlar." },
 ];
 
 const processSteps = [
-  { title: "Ihtiyac Analizi", text: "Hedef ve akademik profilinizi degerlendiririz." },
-  { title: "Program Secimi", text: "Yas, alan ve hedefe gore dogru programi belirleriz." },
-  { title: "Basvuru Yonetimi", text: "Evrak, niyet ve takvim surecini takip ederiz." },
-  { title: "Katilim ve Takip", text: "Program oncesi hazirlik ve sonrasinda cikti plani yapariz." },
+  { title: "İhtiyaç Analizi", text: "Hedef ve akademik profilinizi değerlendiririz." },
+  { title: "Program Seçimi", text: "Yaş, alan ve hedefe göre doğru programı belirleriz." },
+  { title: "Başvuru Yönetimi", text: "Evrak, niyet ve takvim sürecini takip ederiz." },
+  { title: "Katılım ve Takip", text: "Program öncesi hazırlık ve sonrasında çıktı planı yaparız." },
 ];
 
 export default function AkademikProgramlarPage() {
@@ -73,16 +72,16 @@ export default function AkademikProgramlarPage() {
     <main>
       <Hero
         eyebrow="Akademik Programlar"
-        title="Akademik Programlar ile akademik hedeflerinizi guclendirin"
-        text="Kariyerinizi guclendirecek uluslararasi akademik firsatlari kesfedin. Alaniniza uygun programlari inceleyin, basvuru ve kabul sureclerinde uzman rehberligimizle akademik yolculugunuzu zenginlestirin."
-        primaryCta={{ label: "Programimi Planla", href: "/iletisim" }}
+        title="Akademik Programlar ile akademik hedeflerinizi güçlendirin"
+        text="Kariyerinizi güçlendirecek uluslararası akademik fırsatları keşfedin. Alanınıza uygun programları inceleyin, başvuru ve kabul süreçlerinde uzman rehberliğimizle akademik yolculuğunuzu zenginleştirin."
+        primaryCta={{ label: "Programımı Planla", href: "/iletisim" }}
         secondaryCta={{ label: "WhatsApp'tan Sor", href: "https://wa.me/" }}
       />
 
       {/* Programs section */}
       <section>
         <div className="container">
-          <SectionHead eyebrow="Programlar" title="Kariyerinizi guclendiren akademik firsatlar" />
+          <SectionHead eyebrow="Programlar" title="Kariyerinizi güçlendiren akademik fırsatlar" />
           <div className="grid-3">
             {programs.map((p, i) => (
               <article
@@ -99,7 +98,7 @@ export default function AkademikProgramlarPage() {
                   ))}
                 </ul>
                 <a className="text-link" href="#">
-                  Detaylari Incele
+                  Detayları İncele
                 </a>
               </article>
             ))}
@@ -108,7 +107,7 @@ export default function AkademikProgramlarPage() {
       </section>
 
       <BenefitGrid
-        eyebrow="Deger"
+        eyebrow="Değer"
         title="Neler sunuyoruz?"
         items={valueItems}
         dark
@@ -117,7 +116,7 @@ export default function AkademikProgramlarPage() {
       {/* Audience section */}
       <section>
         <div className="container">
-          <SectionHead eyebrow="Uygunluk" title="Kimler icin uygun?" />
+          <SectionHead eyebrow="Uygunluk" title="Kimler için uygun?" />
           <div className="grid-3">
             {audienceItems.map((item) => (
               <article key={item.title} className="card">
@@ -130,14 +129,14 @@ export default function AkademikProgramlarPage() {
       </section>
 
       <StepList
-        eyebrow="Surec"
-        title="Nasil calisiyoruz?"
+        eyebrow="Süreç"
+        title="Nasıl çalışıyoruz?"
         items={processSteps}
       />
 
       <CTASection
-        title="Akademik profilinizi global olcekte guclendirin"
-        text="Study Global ile hedefinize uygun programlari netlestirin."
+        title="Akademik profilinizi global ölçekte güçlendirin"
+        text="Study Global ile hedefinize uygun programları netleştirin."
       />
     </main>
   );

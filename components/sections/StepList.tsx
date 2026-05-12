@@ -1,4 +1,5 @@
 import { SectionHead } from "@/components/ui/SectionHead";
+import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 
 type StepListProps = {
   eyebrow: string;
@@ -8,7 +9,7 @@ type StepListProps = {
 
 export function StepList({ eyebrow, title, items }: StepListProps) {
   return (
-    <section>
+    <RevealOnScroll as="section">
       <div className="container">
         <SectionHead eyebrow={eyebrow} title={title} />
 
@@ -21,6 +22,6 @@ export function StepList({ eyebrow, title, items }: StepListProps) {
           ))}
         </div>
       </div>
-    </section>
+    </RevealOnScroll>
   );
 }

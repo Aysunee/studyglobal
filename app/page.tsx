@@ -12,11 +12,12 @@ import { CTASection } from "@/components/sections/CTASection";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { Button } from "@/components/ui/Button";
 import { LetterTitle } from "@/components/ui/LetterTitle";
+import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 
 export const metadata: Metadata = {
-  title: "Study Global | Yurtdisi Egitim Danismanligi",
+  title: "Study Global | Yurtdışı Eğitim Danışmanlığı",
   description:
-    "Study Global ile yurtdisi egitim, sinav hazirligi ve akademik program danismanligi.",
+    "Study Global ile yurtdışı eğitim, sınav hazırlığı ve akademik program danışmanlığı.",
 };
 
 /* ------------------------------------------------------------------ */
@@ -26,37 +27,37 @@ export const metadata: Metadata = {
 const services = [
   {
     image: "/assets/services/university-education.png",
-    label: "Universite",
-    title: "Yurt disinda universite egitimi",
-    text: "Lisans, yuksek lisans, foundation ve okul secimi.",
+    label: "Üniversite",
+    title: "Yurt dışında üniversite eğitimi",
+    text: "Lisans, yüksek lisans, foundation ve okul seçimi.",
     href: "/universite",
   },
   {
     image: "/assets/services/high-school-education.png",
     label: "Lise",
-    title: "Yurt disinda lise egitimi",
-    text: "Okul secimi, aile danismanligi ve basvuru takibi.",
-    href: "#",
+    title: "Yurt dışında lise eğitimi",
+    text: "Okul seçimi, aile danışmanlığı ve başvuru takibi.",
+    href: "/iletisim",
   },
   {
     image: "/assets/services/language-education.png",
-    label: "Dil Okullari",
-    title: "Yurt disinda dil egitimi",
-    text: "Ulke, sehir, okul ve program suresi secimi.",
-    href: "#",
+    label: "Dil Okulları",
+    title: "Yurt dışında dil eğitimi",
+    text: "Ülke, şehir, okul ve program süresi seçimi.",
+    href: "/iletisim",
   },
   {
     image: "/assets/services/exam-prep-service.png",
-    label: "Sinavlar",
-    title: "Sinav hazirlik ve basvuru",
-    text: "IELTS, OET, SAT, AP ve Cambridge surecleri.",
+    label: "Sınavlar",
+    title: "Sınav hazırlık ve başvuru",
+    text: "IELTS, OET, SAT, AP ve Cambridge süreçleri.",
     href: "/sinavlar",
   },
   {
     image: "/assets/services/application-visa.png",
     label: "Destek",
-    title: "Basvuru, vize ve konaklama",
-    text: "Evrak, kabul, vize ve yerlesim planlamasi.",
+    title: "Başvuru, vize ve konaklama",
+    text: "Evrak, kabul, vize ve yerleşim planlaması.",
     href: "/yurt-disi-egitim",
   },
 ];
@@ -65,44 +66,44 @@ const roadmapCards = [
   {
     icon: "A",
     title: "Akademik Programlar",
-    text: "Kariyerinizi guclendirecek akademik firsatlari kesfedin.",
-    items: ["Staj + Proje Calismalari", "Akademik Yaz Okullari", "GAC - GBC - WLE"],
+    text: "Kariyerinizi güçlendirecek akademik fırsatları keşfedin.",
+    items: ["Staj + Proje Çalışmaları", "Akademik Yaz Okulları", "GAC · GBC · WLE"],
     href: "/akademik-programlar",
-    linkText: "Tum programlari incele",
+    linkText: "Tüm programları incele",
     featured: true,
   },
   {
     icon: "S",
-    title: "Sinavlar",
-    text: "Hedef sinavlara hazirlanin, puaninizi birlikte yukseltelim.",
+    title: "Sınavlar",
+    text: "Hedef sınavlara hazırlanın, puanınızı birlikte yükseltelim.",
     items: ["IELTS, OET, SAT, AP", "TMUA", "Cambridge Exams"],
     href: "/sinavlar",
-    linkText: "Tum sinavlari incele",
+    linkText: "Tüm sınavları incele",
     featured: false,
   },
   {
     icon: "G",
-    title: "Yurt Disi Egitim",
-    text: "Hayalinizdeki ulkede dogru universite ve programi bulun.",
-    items: ["Ingiltere, Kanada, Amerika", "Hollanda, Almanya, Italya", "ve daha fazlasi"],
+    title: "Yurt Dışı Eğitim",
+    text: "Hayalinizdeki ülkede doğru üniversite ve programı bulun.",
+    items: ["İngiltere, Kanada, Amerika", "Hollanda, Almanya, İtalya", "ve daha fazlası"],
     href: "/yurt-disi-egitim",
-    linkText: "Ulkeleri kesfet",
+    linkText: "Ülkeleri keşfet",
     featured: false,
   },
 ];
 
 const destinations = [
-  { name: "Ingiltere", image: "/assets/countries/uk.jpg", slug: "ingiltere" },
+  { name: "İngiltere", image: "/assets/countries/uk.jpg", slug: "ingiltere" },
   { name: "Kanada", image: "/assets/countries/canada.jpg", slug: "kanada" },
   { name: "Amerika", image: "/assets/countries/america.jpg", slug: "amerika" },
   { name: "Hollanda", image: "/assets/countries/holland.jpg", slug: "hollanda" },
   { name: "Almanya", image: "/assets/countries/germany.jpg", slug: "almanya" },
-  { name: "Italya", image: "/assets/countries/italy.jpg", slug: "italya" },
-  { name: "Irlanda", image: "/assets/countries/ireland.jpg", slug: "irlanda" },
+  { name: "İtalya", image: "/assets/countries/italy.jpg", slug: "italya" },
+  { name: "İrlanda", image: "/assets/countries/ireland.jpg", slug: "irlanda" },
   { name: "Malta", image: "/assets/countries/malta.jpg", slug: "" },
   { name: "Finlandiya", image: "/assets/countries/finland.jpg", slug: "finlandiya" },
-  { name: "Isvicre", image: "/assets/countries/switzerland.jpg", slug: "isvicre" },
-  { name: "Ispanya", image: "/assets/countries/spain.jpg", slug: "ispanya" },
+  { name: "İsviçre", image: "/assets/countries/switzerland.jpg", slug: "isvicre" },
+  { name: "İspanya", image: "/assets/countries/spain.jpg", slug: "ispanya" },
   { name: "Japonya", image: "/assets/countries/japan.jpg", slug: "japonya" },
 ];
 
@@ -111,56 +112,56 @@ const testimonials = [
     initials: "ZA",
     name: "Zeynep A.",
     uni: "University of Manchester",
-    text: "Basvuru surecinde hangi adimi ne zaman atacagimi biliyordum. Cok guvenli ilerledik.",
+    text: "Başvuru sürecinde hangi adımı ne zaman atacağımı biliyordum. Çok güvenli ilerledik.",
   },
   {
     initials: "MK",
     name: "Mert K.",
     uni: "University of Edinburgh",
-    text: "Program secimi ve niyet mektubu destegi kabul almamda belirleyici oldu.",
+    text: "Program seçimi ve niyet mektubu desteği kabul almamda belirleyici oldu.",
   },
   {
     initials: "ED",
     name: "Ece D.",
     uni: "University of Bristol",
-    text: "IELTS planimdan vize kontrol listesine kadar butun surec cok netti.",
+    text: "IELTS planımdan vize kontrol listesine kadar bütün süreç çok netti.",
   },
 ];
 
 const blogPreviews = [
   {
-    category: "Universiteler",
-    title: "2026 basvuru takvimi nasil planlanmali?",
-    text: "Okul listesi, evrak hazirligi, sinav skorlari ve vize zamanlamasini tek planda toplayin.",
+    category: "Üniversiteler",
+    title: "2026 başvuru takvimi nasıl planlanmalı?",
+    text: "Okul listesi, evrak hazırlığı, sınav skorları ve vize zamanlamasını tek planda toplayın.",
   },
   {
-    category: "Sinavlar",
-    title: "IELTS, OET ve SAT arasinda dogru secim",
-    text: "Hedef ulke, bolum ve basvuru seviyenize gore hangi sinavin daha dogru oldugunu karsilastirin.",
+    category: "Sınavlar",
+    title: "IELTS, OET ve SAT arasında doğru seçim",
+    text: "Hedef ülke, bölüm ve başvuru seviyenize göre hangi sınavın daha doğru olduğunu karşılaştırın.",
   },
   {
     category: "Akademik Programlar",
-    title: "Yaz okulu ve staj programlari CV'ye nasil katki saglar?",
-    text: "Akademik profilinizi guclendirecek kisa donem programlari stratejik sekilde secin.",
+    title: "Yaz okulu ve staj programları CV'ye nasıl katkı sağlar?",
+    text: "Akademik profilinizi güçlendirecek kısa dönem programları stratejik şekilde seçin.",
   },
 ];
 
 const steps = [
   {
     title: "Profil Analizi",
-    text: "Akademik gecmisinizi, hedeflerinizi ve butcenizi netlestiririz.",
+    text: "Akademik geçmişinizi, hedeflerinizi ve bütçenizi netleştiririz.",
   },
   {
-    title: "Program / Sinav Secimi",
-    text: "Size en uygun ulke, okul, program ve sinav rotasini belirleriz.",
+    title: "Program / Sınav Seçimi",
+    text: "Size en uygun ülke, okul, program ve sınav rotasını belirleriz.",
   },
   {
-    title: "Basvuru Plani",
-    text: "Evrak, takvim, referans ve niyet mektubu surecini yonetiriz.",
+    title: "Başvuru Planı",
+    text: "Evrak, takvim, referans ve niyet mektubu sürecini yönetiriz.",
   },
   {
     title: "Kabul & Vize",
-    text: "Kabul sonrasi vize ve hazirlik surecinde yaninizda oluruz.",
+    text: "Kabul sonrası vize ve hazırlık sürecinde yanınızda oluruz.",
   },
 ];
 
@@ -169,6 +170,9 @@ const steps = [
 /* ------------------------------------------------------------------ */
 
 export default function HomePage() {
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
+  const whatsappHref = whatsappNumber ? `https://wa.me/${whatsappNumber}` : "/iletisim";
+
   return (
     <>
       {/* 1 ---- Hero ---- */}
@@ -176,22 +180,25 @@ export default function HomePage() {
         <div className="hero-copy">
           <LetterTitle text="Global eğitim yolculuğunu birlikte tasarlayalım" />
           <p>
-            Universite basvurularindan dil okullarina, sinav hazirligindan akademik programlara ve
-            ulke secimine kadar her adimda yaninizdayiz. Dogru tercih, guclu basvuru, basarili
+            Üniversite başvurularından dil okullarına, sınav hazırlığından akademik programlara ve
+            ülke seçimine kadar her adımda yanınızdayız. Doğru tercih, güçlü başvuru, başarılı
             gelecek.
           </p>
           <div className="hero-actions">
             <Button variant="primary" href="/iletisim">
-              Ucretsiz Danismanlik Al
+              Ücretsiz Danışmanlık Al
             </Button>
-            <Button variant="secondary" href={process.env.NEXT_PUBLIC_WHATSAPP_URL ?? "https://wa.me/"}>
-              WhatsApp&apos;tan Sor
-            </Button>
-          </div>
-          <div className="hero-points">
-            <div className="point">14+ Yil Deneyim</div>
-            <div className="point">Global Egitim Danismanligi</div>
-            <div className="point">Guvenli ve Seffaf Surec</div>
+            <Link
+              href={whatsappHref}
+              className="hero-whatsapp-icon"
+              aria-label="WhatsApp'tan yazın"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.464 3.488" />
+              </svg>
+            </Link>
           </div>
         </div>
         <div className="hero-side">
@@ -202,29 +209,31 @@ export default function HomePage() {
       {/* 2 ---- Trust strip ---- */}
       <TrustStrip
         metrics={[
-          { value: "1.000+", label: "Ogrenci" },
-          { value: "50+", label: "Partner Kurum" },
-          { value: "14+", label: "Yil Deneyim" },
-          { value: "UCAS", label: "Vize \u2022 IELTS \u2022 OET" },
+          { value: "20.000+", label: "Öğrenci" },
+          { value: "90+", label: "Partner Kurum" },
+          { value: "14", label: "Yıl Deneyim" },
+          { value: "IELTS & OET", label: "Sınav Merkezleri" },
+          { value: "Vize", label: "Danışmanlığı" },
+          { value: "UCAS", label: "Başvuru Desteği" },
         ]}
       />
 
       {/* 3 ---- Services ---- */}
-      <section className="service-visual-section">
+      <RevealOnScroll as="section" className="service-visual-section">
         <div className="container">
           <SectionHead
             eyebrow="Hizmetlerimiz"
-            title="Yurt disi egitim surecinizde yaninizdayiz"
-            description="Universite, lise, dil egitimi, sinav hazirligi ve basvuru sureclerinde Study Global danismanlariyla ilerleyin."
+            title="Yurt dışı eğitim sürecinizde yanınızdayız"
+            description="Üniversite, lise, dil eğitimi, sınav hazırlığı ve başvuru süreçlerinde Study Global danışmanlarıyla ilerleyin."
           />
           <ServiceGrid services={services} />
         </div>
-      </section>
+      </RevealOnScroll>
 
       {/* 4 ---- Roadmap cards ---- */}
-      <section>
+      <RevealOnScroll as="section">
         <div className="container">
-          <SectionHead eyebrow="Yol haritaniz" title="Size en uygun yolu birlikte planlayalim" />
+          <SectionHead eyebrow="Yol haritanız" title="Size en uygun yolu birlikte planlayalım" />
           <div className="grid-3">
             {roadmapCards.map((card) => (
               <article
@@ -246,28 +255,28 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-      </section>
+      </RevealOnScroll>
 
       {/* 5 ---- Destination strip (dark band) ---- */}
-      <section id="global-secenekler" className="dark-band destinations-showcase">
+      <RevealOnScroll as="section" id="global-secenekler" className="dark-band destinations-showcase">
         <div className="container">
           <SectionHead
-            eyebrow="Populer hedefler"
-            title="Global secenekleri karsilastirin"
-            description="Ulke, okul, butce ve kariyer hedeflerinizi birlikte degerlendirerek gercekci bir basvuru plani olusturuyoruz."
+            eyebrow="Popüler hedefler"
+            title="Global seçenekleri karşılaştırın"
+            description="Ülke, okul, bütçe ve kariyer hedeflerinizi birlikte değerlendirerek gerçekçi bir başvuru planı oluşturuyoruz."
           />
-          <div className="destination-strip" aria-label="Study Global populer ulke gorselleri">
+          <div className="destination-strip" aria-label="Study Global popüler ülke görselleri">
             <div className="destination-copy">
-              <strong>Ulke rotanizi tek ekranda gorun</strong>
+              <strong>Ülke rotanızı tek ekranda görün</strong>
               <span>
-                Akademik hedef, butce, yasam tarzi ve vize surecine gore en guclu secenekleri
-                karsilastiriyoruz.
+                Akademik hedef, bütçe, yaşam tarzı ve vize sürecine göre en güçlü seçenekleri
+                karşılaştırıyoruz.
               </span>
               <Button variant="primary" href="/iletisim">
-                Ulke Rotami Planla
+                Ülke Rotamı Planla
               </Button>
             </div>
-            <div className="destination-mini-viewport" aria-label="Kayan populer ulke kartlari">
+            <div className="destination-mini-viewport" aria-label="Kayan popüler ülke kartları">
               <div className="destination-mini-grid">
                 {/* First set */}
                 {destinations.map((d) => {
@@ -277,15 +286,12 @@ export default function HomePage() {
                       <span>{d.name}</span>
                     </>
                   );
-                  if (!d.slug) {
-                    return (
-                      <div key={d.name} className="destination-tile">
-                        {tile}
-                      </div>
-                    );
-                  }
                   return (
-                    <Link key={d.name} href={`/ulkeler/${d.slug}`} className="destination-tile">
+                    <Link
+                      key={d.name}
+                      href={d.slug ? `/ulkeler/${d.slug}` : "/yurt-disi-egitim"}
+                      className="destination-tile"
+                    >
                       {tile}
                     </Link>
                   );
@@ -298,15 +304,12 @@ export default function HomePage() {
                       <span>{d.name}</span>
                     </>
                   );
-                  if (!d.slug) {
-                    return (
-                      <div key={`dup-${d.name}`} className="destination-tile">
-                        {tile}
-                      </div>
-                    );
-                  }
                   return (
-                    <Link key={`dup-${d.name}`} href={`/ulkeler/${d.slug}`} className="destination-tile">
+                    <Link
+                      key={`dup-${d.name}`}
+                      href={d.slug ? `/ulkeler/${d.slug}` : "/yurt-disi-egitim"}
+                      className="destination-tile"
+                    >
                       {tile}
                     </Link>
                   );
@@ -315,24 +318,26 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </RevealOnScroll>
 
       {/* 6 ---- Steps ---- */}
-      <StepList eyebrow="Surec" title="Nasil calisiyoruz?" items={steps} />
+      <StepList eyebrow="Süreç" title="Nasıl çalışıyoruz?" items={steps} />
 
       {/* 7 ---- Testimonials ---- */}
-      <section>
+      <RevealOnScroll as="section">
         <div className="container">
-          <SectionHead eyebrow="Basari hikayeleri" title="Ogrencilerimizin yolculuklari" />
+          <SectionHead eyebrow="Başarı hikayeleri" title="Öğrencilerimizin yolculukları" />
           <TestimonialGrid items={testimonials} />
         </div>
-      </section>
+      </RevealOnScroll>
 
       {/* 8 ---- Content hub ---- */}
-      <section className="content-hub">
+      <RevealOnScroll as="section" className="content-hub">
         <div className="container">
-          <SectionHead eyebrow="Bilgi merkezi" title="Basvurudan sinava, kararinizi guclendiren icerikler">
-            <button className="btn btn-outline">Tum Icerikler</button>
+          <SectionHead eyebrow="Bilgi merkezi" title="Başvurudan sınava, kararınızı güçlendiren içerikler">
+            <Link className="btn btn-outline" href="/blog">
+              Tüm İçerikler
+            </Link>
           </SectionHead>
           <div className="hub-grid">
             {blogPreviews.map((b) => (
@@ -340,19 +345,19 @@ export default function HomePage() {
                 <span>{b.category}</span>
                 <h3>{b.title}</h3>
                 <p>{b.text}</p>
-                <a className="text-link" href="#">
-                  Devamini Oku
-                </a>
+                <Link className="text-link" href="/blog">
+                  Devamını oku
+                </Link>
               </article>
             ))}
           </div>
         </div>
-      </section>
+      </RevealOnScroll>
 
       {/* 9 ---- CTA ---- */}
       <CTASection
-        title="Hayallerinizdeki egitime bir adim daha yaklasin!"
-        text="Study Global danismanlariyla ucretsiz on gorusme yapin, ulke ve program seceneklerinizi netlestirin."
+        title="Hayallerinizdeki eğitime bir adım daha yaklaşın!"
+        text="Study Global danışmanlarıyla ücretsiz ön görüşme yapın, ülke ve program seçeneklerinizi netleştirin."
       />
     </>
   );

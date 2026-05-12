@@ -1,4 +1,5 @@
 import { SectionHead } from "@/components/ui/SectionHead";
+import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 
 type BenefitGridProps = {
   eyebrow: string;
@@ -24,13 +25,9 @@ export function BenefitGrid({ eyebrow, title, description, items, dark = false }
     </div>
   );
 
-  if (dark) {
-    return (
-      <section className="dark-band">
-        {content}
-      </section>
-    );
-  }
-
-  return <section>{content}</section>;
+  return (
+    <RevealOnScroll as="section" className={dark ? "dark-band" : ""}>
+      {content}
+    </RevealOnScroll>
+  );
 }

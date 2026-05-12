@@ -6,83 +6,84 @@ import { BenefitGrid } from "@/components/sections/BenefitGrid";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { StepList } from "@/components/sections/StepList";
 import { CTASection } from "@/components/sections/CTASection";
+import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 
 export const metadata: Metadata = {
-  title: "Universite | Study Global",
+  title: "Üniversite | Study Global",
   description:
-    "Study Global ile yurt disinda universite basvurusu, ulke secimi, okul listesi ve kabul stratejisi danismanligi.",
+    "Study Global ile yurt dışında üniversite başvurusu, ülke seçimi, okul listesi ve kabul stratejisi danışmanlığı.",
 };
 
 const trustMetrics = [
-  { value: "1.000+", label: "Ogrenci rotasi" },
+  { value: "1.000+", label: "Öğrenci rotası" },
   { value: "50+", label: "Partner kurum" },
-  { value: "14+", label: "Yil deneyim" },
-  { value: "UCAS", label: "Basvuru - Vize - Sinav" },
+  { value: "14+", label: "Yıl deneyim" },
+  { value: "UCAS", label: "Başvuru - Vize - Sınav" },
 ];
 
 const applicationRoutes = [
   {
-    title: "Lisans Basvurusu",
-    text: "Okul listesi, bolum secimi, sinav gereklilikleri ve basvuru dosyasini tek planda toplariz.",
+    title: "Lisans Başvurusu",
+    text: "Okul listesi, bölüm seçimi, sınav gereklilikleri ve başvuru dosyasını tek planda toplarız.",
   },
   {
     title: "Foundation / Pathway",
-    text: "Akademik gecis yilina ihtiyac duyan adaylar icin dogru program ve ulke alternatiflerini belirleriz.",
+    text: "Akademik geçiş yılına ihtiyaç duyan adaylar için doğru program ve ülke alternatiflerini belirleriz.",
   },
   {
-    title: "Transfer Plani",
-    text: "Mevcut egitiminizi yurt disina tasima olasiligini kredi, ders uyumu ve kabul sartlariyla degerlendiririz.",
+    title: "Transfer Planı",
+    text: "Mevcut eğitiminizi yurt dışına taşıma olasılığını kredi, ders uyumu ve kabul şartlarıyla değerlendiririz.",
   },
   {
     title: "Burs Stratejisi",
-    text: "Akademik basari, portfolyo, sinav skoru ve basvuru zamanlamasina gore burs firsatlarini planariz.",
+    text: "Akademik başarı, portfolyo, sınav skoru ve başvuru zamanlamasına göre burs fırsatlarını planlarız.",
   },
 ];
 
 const countryCards = [
-  { flag: "\ud83c\uddec\ud83c\udde7", name: "Ingiltere", text: "Kisa egitim sureleri, UCAS sureci ve koklu universite agiyla guclu bir rota.", visual: "visual-uk" },
-  { flag: "\ud83c\udde8\ud83c\udde6", name: "Kanada", text: "Cok kulturlu kampusler, yasam kalitesi ve mezuniyet sonrasi kariyer secenekleri.", visual: "visual-canada" },
-  { flag: "\ud83c\uddfa\ud83c\uddf8", name: "Amerika", text: "Genis bolum alternatifi, burs olanaklari ve esnek akademik yapi.", visual: "visual-america" },
-  { flag: "\ud83c\uddf3\ud83c\uddf1", name: "Hollanda", text: "Ingilizce lisans programlari ve Avrupa icinde guclu akademik baglantilar.", visual: "visual-holland" },
-  { flag: "\ud83c\udde9\ud83c\uddea", name: "Almanya", text: "Teknik ve arastirma odakli bolumlerde guclu universite secenekleri.", visual: "visual-germany" },
-  { flag: "\ud83c\uddee\ud83c\uddf9", name: "Italya", text: "Tasarim, mimarlik, sanat ve isletme alanlarinda dikkat ceken programlar.", visual: "visual-italy" },
+  { flag: "\ud83c\uddec\ud83c\udde7", name: "İngiltere", text: "Kısa eğitim süreleri, UCAS süreci ve köklü üniversite ağıyla güçlü bir rota.", visual: "visual-uk" },
+  { flag: "\ud83c\udde8\ud83c\udde6", name: "Kanada", text: "Çok kültürlü kampüsler, yaşam kalitesi ve mezuniyet sonrası kariyer seçenekleri.", visual: "visual-canada" },
+  { flag: "\ud83c\uddfa\ud83c\uddf8", name: "Amerika", text: "Geniş bölüm alternatifi, burs olanakları ve esnek akademik yapı.", visual: "visual-america" },
+  { flag: "\ud83c\uddf3\ud83c\uddf1", name: "Hollanda", text: "İngilizce lisans programları ve Avrupa içinde güçlü akademik bağlantılar.", visual: "visual-holland" },
+  { flag: "\ud83c\udde9\ud83c\uddea", name: "Almanya", text: "Teknik ve araştırma odaklı bölümlerde güçlü üniversite seçenekleri.", visual: "visual-germany" },
+  { flag: "\ud83c\uddee\ud83c\uddf9", name: "İtalya", text: "Tasarım, mimarlık, sanat ve işletme alanlarında dikkat çeken programlar.", visual: "visual-italy" },
 ];
 
 const applicationFileItems = [
   {
     title: "Akademik Profil",
-    text: "Not ortalamasi, ders secimi, sinav skorlari ve hedef bolum uyumunu analiz ederiz.",
+    text: "Not ortalaması, ders seçimi, sınav skorları ve hedef bölüm uyumunu analiz ederiz.",
   },
   {
-    title: "Okul Kisa Listesi",
-    text: "Reach, match ve safe okul dengesini gercekci bir basvuru listesine ceviririz.",
+    title: "Okul Kısa Listesi",
+    text: "Reach, match ve safe okul dengesini gerçekçi bir başvuru listesine çeviririz.",
   },
   {
     title: "Niyet & Referans",
-    text: "Kisisel hikaye, motivasyon ve referans dosyasini hedef programa gore guclendiririz.",
+    text: "Kişisel hikaye, motivasyon ve referans dosyasını hedef programa göre güçlendiririz.",
   },
   {
-    title: "Takvim Yonetimi",
-    text: "Son basvuru tarihleri, evrak, sinav ve vize adimlarini tek takvimde yonetiriz.",
+    title: "Takvim Yönetimi",
+    text: "Son başvuru tarihleri, evrak, sınav ve vize adımlarını tek takvimde yönetiriz.",
   },
 ];
 
 const steps = [
   {
     title: "Profil Analizi",
-    text: "Akademik gecmis, hedef bolum, butce ve ulke beklentilerini netlestiririz.",
+    text: "Akademik geçmiş, hedef bölüm, bütçe ve ülke beklentilerini netleştiririz.",
   },
   {
-    title: "Universite Listesi",
-    text: "Basvuru sansi ve kariyer hedefinize gore kisa liste olusturuz.",
+    title: "Üniversite Listesi",
+    text: "Başvuru şansı ve kariyer hedefinize göre kısa liste oluşturuz.",
   },
   {
-    title: "Dosya Hazirligi",
-    text: "Basvuru formlari, niyet mektubu, referans ve sinav planini yonetiriz.",
+    title: "Dosya Hazırlığı",
+    text: "Başvuru formları, niyet mektubu, referans ve sınav planını yönetiriz.",
   },
   {
     title: "Kabul & Vize",
-    text: "Kabul sonrasi depozito, konaklama ve vize hazirligini planariz.",
+    text: "Kabul sonrası depozito, konaklama ve vize hazırlığını planlarız.",
   },
 ];
 
@@ -90,30 +91,30 @@ export default function UniversitePage() {
   return (
     <main>
       <Hero
-        eyebrow="Yurt disinda universite"
-        title="Universite basvurunuzu dogru okul listesiyle guclendirin"
-        text="Hedef bolumunuz, akademik profiliniz, butceniz ve kariyer planiniza gore ulke ve universite seceneklerini birlikte netlestiriyoruz. Dogru okul listesi, guclu basvuru dosyasi ve kontrollu kabul sureci."
-        points={["Okul Kisa Listesi", "Basvuru Dosyasi", "Kabul & Vize Plani"]}
-        primaryCta={{ label: "Basvurumu Degerlendir", href: "/iletisim" }}
+        eyebrow="Yurt dışında üniversite"
+        title="Üniversite başvurunuzu doğru okul listesiyle güçlendirin"
+        text="Hedef bölümünüz, akademik profiliniz, bütçeniz ve kariyer planınıza göre ülke ve üniversite seçeneklerini birlikte netleştiriyoruz. Doğru okul listesi, güçlü başvuru dosyası ve kontrollü kabul süreci."
+        points={["Okul Kısa Listesi", "Başvuru Dosyası", "Kabul & Vize Planı"]}
+        primaryCta={{ label: "Başvurumu Değerlendir", href: "/iletisim" }}
         secondaryCta={{ label: "WhatsApp'tan Sor", href: "https://wa.me/" }}
       />
 
       <TrustStrip metrics={trustMetrics} />
 
       <BenefitGrid
-        eyebrow="Basvuru rotalari"
-        title="Size uygun universite yolunu secelim"
-        description="Akademik gecmisinize, hedef bolumunuze ve takviminize gore en dogru basvuru stratejisini birlikte olusturuyoruz."
+        eyebrow="Başvuru rotaları"
+        title="Size uygun üniversite yolunu seçelim"
+        description="Akademik geçmişinize, hedef bölümünüze ve takviminize göre en doğru başvuru stratejisini birlikte oluşturuyoruz."
         items={applicationRoutes}
       />
 
       {/* Country cards - dark band */}
-      <section className="dark-band">
+      <RevealOnScroll as="section" className="dark-band">
         <div className="container">
           <SectionHead
-            eyebrow="Populer ulkeler"
-            title="Universite hedefinizi global seceneklerle karsilastirin"
-            description="Bolum gucu, maliyet, kampus deneyimi ve mezuniyet sonrasi firsatlari birlikte okuyoruz."
+            eyebrow="Popüler ülkeler"
+            title="Üniversite hedefinizi global seçeneklerle karşılaştırın"
+            description="Bölüm gücü, maliyet, kampüs deneyimi ve mezuniyet sonrası fırsatları birlikte okuyoruz."
           />
           <div className="country-grid">
             {countryCards.map((c) => (
@@ -123,20 +124,20 @@ export default function UniversitePage() {
                 <h3>{c.name}</h3>
                 <p>{c.text}</p>
                 <Link className="text-link" href="/yurt-disi-egitim">
-                  Ulke Detaylari
+                  Ülke Detayları
                 </Link>
               </article>
             ))}
           </div>
         </div>
-      </section>
+      </RevealOnScroll>
 
       {/* Application file grid */}
-      <section>
+      <RevealOnScroll as="section">
         <div className="container">
           <SectionHead
-            eyebrow="Basvuru dosyasi"
-            title="Guclu basvuru icin neleri birlikte hazirliyoruz?"
+            eyebrow="Başvuru dosyası"
+            title="Güçlü başvuru için neleri birlikte hazırlıyoruz?"
           />
           <div className="grid-4">
             {applicationFileItems.map((item) => (
@@ -147,17 +148,17 @@ export default function UniversitePage() {
             ))}
           </div>
         </div>
-      </section>
+      </RevealOnScroll>
 
       <StepList
-        eyebrow="Surec"
-        title="Universite basvuru yolculugu"
+        eyebrow="Süreç"
+        title="Üniversite başvuru yolculuğu"
         items={steps}
       />
 
       <CTASection
-        title="Universite hedefiniz icin ilk okul listenizi cikaralim"
-        text="Study Global danismanlariyla ucretsiz on gorusme yapin, ulke ve bolum seceneklerinizi netlestirin."
+        title="Üniversite hedefiniz için ilk okul listenizi çıkaralım"
+        text="Study Global danışmanlarıyla ücretsiz ön görüşme yapın, ülke ve bölüm seçeneklerinizi netleştirin."
       />
     </main>
   );

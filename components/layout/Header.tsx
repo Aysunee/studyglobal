@@ -2,18 +2,17 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 const navLinks = [
   { label: "Ana Sayfa", href: "/" },
   { label: "Üniversite", href: "/universite" },
-  { label: "Yüksek Lisans", href: null },
-  { label: "Dil Okulları", href: null },
+  { label: "Yüksek Lisans", href: "/yuksek-lisans" },
+  { label: "Dil Okulları", href: "/dil-okullari" },
   { label: "Akademik Programlar", href: "/akademik-programlar" },
   { label: "Sınavlar", href: "/sinavlar" },
   { label: "Yurt Dışı Eğitim", href: "/yurt-disi-egitim" },
-  { label: "Blog", href: null },
+  { label: "Blog", href: "/blog" },
   { label: "İletişim", href: "/iletisim" },
 ] as const;
 
@@ -34,20 +33,20 @@ const menus: Record<string, { title: string; text: string; items: MenuItem[] }> 
     title: "Yüksek lisans planı",
     text: "MBA, master ve kariyer odaklı programları ülke ve bütçe kriterleriyle karşılaştırın.",
     items: [
-      ["MBA seçenekleri", null],
-      ["Master başvurusu", null],
-      ["CV & niyet", null],
-      ["Burs kontrolü", null],
+      ["MBA seçenekleri", "/yuksek-lisans"],
+      ["Master başvurusu", "/yuksek-lisans"],
+      ["CV & niyet", "/yuksek-lisans"],
+      ["Burs kontrolü", "/yuksek-lisans"],
     ],
   },
   "Dil Okulları": {
     title: "Dil okulu seçenekleri",
     text: "Hedef şehir, süre ve bütçeye göre İngilizce program alternatiflerini görün.",
     items: [
-      ["İngiltere", null],
-      ["Kanada", null],
-      ["Malta", null],
-      ["Seviye planı", null],
+      ["İngiltere", "/dil-okullari"],
+      ["Kanada", "/dil-okullari"],
+      ["Malta", "/dil-okullari"],
+      ["Seviye planı", "/dil-okullari"],
     ],
   },
   "Akademik Programlar": {
@@ -89,16 +88,34 @@ export function Header() {
   const [activeBubble, setActiveBubble] = useState<string | null>(null);
   const [bubblePos, setBubblePos] = useState({ x: 0, y: 0 });
   const hideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const prevScrollY = useRef(0);
   const pathname = usePathname();
 
   const updateHeaderState = useCallback(() => {
     const scrollY = window.scrollY;
+    const goingDown = scrollY > prevScrollY.current;
+    const delta = Math.abs(scrollY - prevScrollY.current);
+    prevScrollY.current = scrollY;
+
     setIsTop(scrollY < 120);
-    setIsHidden(scrollY > 180 && !open);
+
+    // Always show when menu open or near top
+    if (open || scrollY < 120) {
+      setIsHidden(false);
+      return;
+    }
+
+    // Ignore small deltas (avoid flicker on momentum/precision scrolling)
+    if (delta < 4) return;
+
+    if (goingDown && scrollY > 180) {
+      setIsHidden(true);
+    } else if (!goingDown) {
+      setIsHidden(false);
+    }
   }, [open]);
 
   useEffect(() => {
-    updateHeaderState();
     window.addEventListener("scroll", updateHeaderState, { passive: true });
     return () => window.removeEventListener("scroll", updateHeaderState);
   }, [updateHeaderState]);
@@ -108,7 +125,8 @@ export function Header() {
     if (!menu || window.matchMedia("(max-width: 1060px)").matches) return;
     if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
     const rect = linkEl.getBoundingClientRect();
-    const x = Math.min(window.innerWidth - 210, Math.max(210, rect.left + rect.width / 2));
+    // Her link'in altında ortalanır
+    const x = Math.min(window.innerWidth - 220, Math.max(220, rect.left + rect.width / 2));
     const y = rect.bottom + 18;
     setBubblePos({ x, y });
     setActiveBubble(label);
@@ -133,11 +151,7 @@ export function Header() {
   return (
     <header className={headerClass}>
       <div className="nav-wrap" onMouseLeave={hideBubble}>
-        <Link className="brand" href="/" aria-label="Study Global ana sayfa">
-          <Image src="/logo.png" alt="Study Global Yurtdışı Eğitim Danışmanlığı" width={164} height={40} priority />
-        </Link>
-
-        <nav className={`nav-links${open ? " active" : ""}`} data-nav="">
+        <nav className={`nav-links${open ? " open" : ""}`} data-nav="">
           {navLinks.map((link) =>
             link.href ? (
               <Link
@@ -171,6 +185,7 @@ export function Header() {
             className={`hamburger${open ? " active" : ""}`}
             data-hamburger=""
             aria-label="Menüyü aç"
+            aria-expanded={open}
             onClick={() => setOpen(!open)}
           >
             <span></span>

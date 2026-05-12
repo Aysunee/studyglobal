@@ -77,9 +77,8 @@ export function ChatWidget() {
   return (
     <div className="chat-widget">
       <div
-        className={`chat-panel${isOpen ? " active" : ""}`}
+        className={`chat-panel${isOpen ? " open" : ""}`}
         data-chat-panel=""
-        style={{ display: isOpen ? undefined : "none" }}
       >
         <div className="chat-head">
           <strong>Study Global Asistan</strong>

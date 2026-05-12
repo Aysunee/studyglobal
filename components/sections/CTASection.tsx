@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/Button";
+import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 
 type CTASectionProps = {
   title: string;
@@ -6,10 +7,11 @@ type CTASectionProps = {
 };
 
 export function CTASection({ title, text }: CTASectionProps) {
-  const whatsappLink = process.env.NEXT_PUBLIC_WHATSAPP_URL ?? "https://wa.me/";
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
+  const whatsappLink = whatsappNumber ? `https://wa.me/${whatsappNumber}` : "/iletisim";
 
   return (
-    <section className="cta-section">
+    <RevealOnScroll as="section" className="cta-section">
       <div className="container">
         <h2>{title}</h2>
         <p>{text}</p>
@@ -19,10 +21,10 @@ export function CTASection({ title, text }: CTASectionProps) {
             Ücretsiz Danışmanlık Al
           </Button>
           <Button variant="secondary" href={whatsappLink}>
-            WhatsApp&apos;tan Hemen Yazin
+            WhatsApp&apos;tan Hemen Yazın
           </Button>
         </div>
       </div>
-    </section>
+    </RevealOnScroll>
   );
 }

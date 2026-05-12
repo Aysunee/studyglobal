@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState, type FormEvent } from "react";
 
 export function LeadForm() {
@@ -17,8 +18,8 @@ export function LeadForm() {
     return (
       <aside className="lead-card" style={{ textAlign: "center" }}>
         <div style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>&#10003;</div>
-        <h2>Talebiniz alindi!</h2>
-        <p>Danismanlarimiz en kisa surede sizinle iletisime gececek.</p>
+        <h2>Talebiniz alındı!</h2>
+        <p>Danışmanlarımız en kısa sürede sizinle iletişime geçecek.</p>
       </aside>
     );
   }
@@ -26,14 +27,13 @@ export function LeadForm() {
   return (
     <aside className="lead-card" data-primary-form="">
       <div className="lead-card-top">
-        <div className="lead-icon">SG</div>
         <div>
-          <h2>Sizi arayalim.</h2>
+          <h2>Danışmanımız sizi arasın.</h2>
         </div>
       </div>
       <p>
-        Yurt disi egitim hedefinizi paylasin, danismanlarimiz en kisa surede
-        sizinle iletisime gecsin.
+        Yurt dışı eğitim hedefinizi paylaşın, danışmanlarımız en kısa sürede
+        sizinle iletişime geçsin.
       </p>
       <form className="form-grid" onSubmit={handleSubmit}>
         <input required name="name" type="text" placeholder="Ad Soyad" />
@@ -45,35 +45,43 @@ export function LeadForm() {
         />
         <select required name="interest" defaultValue="">
           <option value="" disabled>
-            Ilgi Alani Secin
+            İlgi Alanı Seçin
           </option>
-          <option>Universite</option>
-          <option>Yuksek Lisans / MBA</option>
-          <option>Sinav Hazirligi</option>
+          <option>Üniversite</option>
+          <option>Yüksek Lisans / MBA</option>
+          <option>Sınav Hazırlığı</option>
           <option>Akademik Programlar</option>
         </select>
         <select required name="country" defaultValue="">
           <option value="" disabled>
-            Hedef Ulke Secin
+            Hedef Ülke Seçin
           </option>
-          <option>Ingiltere</option>
+          <option>İngiltere</option>
           <option>Kanada</option>
           <option>Amerika</option>
           <option>Almanya</option>
           <option>Hollanda</option>
-          <option>Italya</option>
+          <option>İtalya</option>
         </select>
-        <button className="btn btn-primary" type="submit">
-          Beni Arayin
-        </button>
+        <div className="lead-form-actions">
+          <label className="kvkk-consent">
+            <input required name="kvkk" type="checkbox" />
+            <span>
+              <Link href="/kvkk" target="_blank" rel="noopener noreferrer"><strong>KVKK</strong></Link> kapsamında verilerimin işlenmesini onaylıyorum.
+            </span>
+          </label>
+          <button className="btn btn-primary" type="submit">
+            Beni Arayın
+          </button>
+        </div>
       </form>
       <div className="lead-benefits">
-        <span>24 saat icinde donus</span>
-        <span>Ucretsiz on analiz</span>
-        <span>KVKK uyumlu surec</span>
+        <span>24 saat içinde dönüş</span>
+        <span>Ücretsiz ön analiz</span>
+        <span>KVKK uyumlu süreç</span>
       </div>
       <small className="form-note">
-        Bilgileriniz gizlidir. Sadece sizinle iletisim icin kullanilir.
+        Bilgileriniz gizlidir. Sadece sizinle iletişim için kullanılır.
       </small>
     </aside>
   );

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 
 type CountryCard = {
@@ -19,7 +18,7 @@ type CountryCardGridProps = {
 };
 
 const filters = [
-  { key: "all", label: "Tum ulkeler" },
+  { key: "all", label: "Tüm ülkeler" },
   { key: "europe", label: "Avrupa" },
   { key: "north-america", label: "Kuzey Amerika" },
   { key: "asia", label: "Asya" },
@@ -56,20 +55,15 @@ export function CountryCardGrid({ countries }: CountryCardGridProps) {
           <Link
             key={c.slug}
             href={`/ulkeler/${c.slug}`}
-            className="country-card has-visual"
+            className="country-card no-visual"
           >
-            <div className="country-visual">
-              <Image
-                src={c.image}
-                alt={c.name}
-                fill
-                className="object-cover"
-              />
+            <div className="country-visual country-visual-flag">
+              <span className="country-visual-flag-emoji">{c.flag}</span>
+              {c.premium && <span className="country-premium-badge">Premium</span>}
             </div>
-            <span className="country-flag">{c.flag}</span>
             <h3>{c.name}</h3>
             <p>{c.description}</p>
-            <span className="text-link">Detaylari Incele</span>
+            <span className="text-link">Detayları İncele</span>
           </Link>
         ))}
       </div>

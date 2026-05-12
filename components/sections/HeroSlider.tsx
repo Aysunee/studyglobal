@@ -1,106 +1,110 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
-const slides = [
-  "/assets/hero-study-desk.jpg",
-  "/assets/global-education-hero.jpg",
-  "/assets/country-decision-banner.jpg",
-  "/assets/destination-collage.jpg",
-  "/assets/academic-programs-collage.jpg",
+type Slide =
+  | { type: "video"; src: string; poster: string }
+  | { type: "image"; src: string };
+
+const slides: Slide[] = [
+  { type: "video", src: "/assets/hero-video.mp4", poster: "/assets/hero1.png" },
+  { type: "image", src: "/assets/hero1.png" },
+  { type: "image", src: "/assets/hero2.png" },
+  { type: "image", src: "/assets/hero3.jpg" },
 ];
 
 const INTERVAL = 6400;
-const TRANSITION_DURATION = 1520;
 
 type HeroSliderProps = {
   children: ReactNode;
 };
 
+function getShouldPlayVideo() {
+  if (typeof window === "undefined") return false;
+  const isMobile = window.matchMedia("(max-width: 760px)").matches;
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  type ConnectionLike = { saveData?: boolean };
+  type NavWithConn = Navigator & { connection?: ConnectionLike };
+  const conn = (navigator as NavWithConn).connection;
+  const saveData = conn?.saveData === true;
+  return !isMobile && !reduce && !saveData;
+}
+
 export function HeroSlider({ children }: HeroSliderProps) {
   const [active, setActive] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [bgImage, setBgImage] = useState(slides[0]);
-  const [nextImage, setNextImage] = useState("");
-  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const transitionTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const prefersReducedMotion = useRef(false);
-  const activeRef = useRef(0);
-
-  const setSlide = useCallback((index: number) => {
-    if (index === activeRef.current || isTransitioning) return;
-
-    activeRef.current = index;
-    setActive(index);
-    setNextImage(slides[index]);
-    setIsTransitioning(true);
-
-    transitionTimerRef.current = setTimeout(() => {
-      setBgImage(slides[index]);
-      setIsTransitioning(false);
-      setNextImage("");
-    }, TRANSITION_DURATION);
-  }, [isTransitioning]);
+  // Start false on both server and client to avoid hydration mismatch,
+  // then flip to true on the client after mount if the device qualifies.
+  const [shouldPlayVideo, setShouldPlayVideo] = useState(false);
 
   useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    prefersReducedMotion.current = mq.matches;
-    const handler = (e: MediaQueryListEvent) => {
-      prefersReducedMotion.current = e.matches;
-    };
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
+    if (getShouldPlayVideo()) setShouldPlayVideo(true);
   }, []);
 
   // Preload images
   useEffect(() => {
-    slides.forEach((src) => {
-      const img = new Image();
-      img.src = src;
+    slides.forEach((slide) => {
+      if (slide.type === "image") {
+        const img = new window.Image();
+        img.src = slide.src;
+      }
     });
   }, []);
 
+  // Auto-advance
   useEffect(() => {
-    function start() {
-      if (timerRef.current) clearInterval(timerRef.current);
-      timerRef.current = setInterval(() => {
-        if (!prefersReducedMotion.current) {
-          const next = (activeRef.current + 1) % slides.length;
-          setSlide(next);
-        }
-      }, INTERVAL);
-    }
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) return;
 
-    function handleVisibility() {
-      if (timerRef.current) clearInterval(timerRef.current);
-      if (!document.hidden) start();
-    }
+    const id = setInterval(() => {
+      setActive((prev) => (prev + 1) % slides.length);
+    }, INTERVAL);
 
-    start();
-    document.addEventListener("visibilitychange", handleVisibility);
-
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
-      if (transitionTimerRef.current) clearTimeout(transitionTimerRef.current);
-      document.removeEventListener("visibilitychange", handleVisibility);
-    };
-  }, [setSlide]);
-
-  const sceneIndex = active % slides.length;
+    return () => clearInterval(id);
+  }, []);
 
   return (
-    <section className={`hero${isTransitioning ? " is-transitioning" : ""}`}>
-      {/* Background layers matching old site structure */}
-      <div
-        className={`hero-bg${!isTransitioning ? " is-live" : ""}`}
-        data-scene={String(sceneIndex)}
-        style={{ backgroundImage: `url("${bgImage}")` }}
-      />
-      <div
-        className="hero-bg-next"
-        data-scene={String(sceneIndex)}
-        style={nextImage ? { backgroundImage: `url("${nextImage}")` } : undefined}
-      />
+    <section className="hero">
+      {/* Background slides — all rendered, opacity-controlled */}
+      <div className="hero-bg-stack">
+        {slides.map((slide, i) => {
+          const isActive = i === active;
+          const className = `hero-slide${isActive ? " is-active" : ""}`;
+
+          if (slide.type === "video") {
+            // On mobile / save-data / reduced motion → fall back to poster image only
+            if (!shouldPlayVideo) {
+              return (
+                <div
+                  key={`slide-${i}`}
+                  className={className}
+                  style={{ backgroundImage: `url("${slide.poster}")` }}
+                />
+              );
+            }
+            return (
+              <video
+                key={`slide-${i}`}
+                className={className}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                poster={slide.poster}
+              >
+                <source src={slide.src} type="video/mp4" />
+              </video>
+            );
+          }
+          return (
+            <div
+              key={`slide-${i}`}
+              className={className}
+              style={{ backgroundImage: `url("${slide.src}")` }}
+            />
+          );
+        })}
+      </div>
       <div className="hero-overlay" />
 
       {/* Content */}

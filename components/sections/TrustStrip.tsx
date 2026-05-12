@@ -3,14 +3,25 @@ type TrustStripProps = {
 };
 
 export function TrustStrip({ metrics }: TrustStripProps) {
+  const stripItems = [...metrics, ...metrics];
+
   return (
     <section className="trust">
-      <div className="container trust-strip">
-        {metrics.map((m) => (
-          <div key={m.label} className="metric">
-            <strong>{m.value}</strong>{m.label}
+      <div className="trust-shell" aria-label="Study Global referansları">
+        <div className="trust-marquee">
+          <div className="trust-strip">
+            {stripItems.map((m, index) => (
+              <div
+                key={`${m.value}-${m.label}-${index}`}
+                className="metric"
+                aria-hidden={index >= metrics.length}
+              >
+                <strong>{m.value}</strong>
+                <span>{m.label}</span>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     </section>
   );

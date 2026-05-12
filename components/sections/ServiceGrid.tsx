@@ -26,8 +26,11 @@ export function ServiceGrid({ services }: ServiceGridProps) {
           <>
             <Image
               src={s.image}
-              alt={`${s.title} hizmet gorseli`}
+              alt={`${s.title} hizmet görseli`}
               fill
+              sizes={isFirst ? "(max-width: 760px) 100vw, 40vw" : "(max-width: 760px) 100vw, 30vw"}
+              priority={isFirst}
+              loading={isFirst ? "eager" : "lazy"}
               className="object-cover"
             />
             <div className="service-visual-copy">

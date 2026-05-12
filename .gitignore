@@ -36,6 +36,20 @@ yarn-error.log*
 # vercel
 .vercel
 
+# netlify
+.netlify
+
+# AI tooling / local agent state (do NOT push)
+.claude/
+.codex/
+.superpowers/
+docs/superpowers/
+
+# OS / editor noise
+.idea/
+.vscode/
+*.swp
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

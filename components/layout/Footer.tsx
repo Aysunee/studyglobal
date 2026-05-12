@@ -3,16 +3,16 @@ import Image from "next/image";
 
 const footerLinks = [
   { label: "Üniversite", href: "/universite" },
-  { label: "Yüksek Lisans", href: null },
-  { label: "Dil Okulları", href: null },
+  { label: "Yüksek Lisans", href: "/yuksek-lisans" },
+  { label: "Dil Okulları", href: "/dil-okullari" },
   { label: "Akademik Programlar", href: "/akademik-programlar" },
   { label: "Sınavlar", href: "/sinavlar" },
   { label: "Yurt Dışı Eğitim", href: "/yurt-disi-egitim" },
-  { label: "Blog", href: null },
+  { label: "Blog", href: "/blog" },
   { label: "İletişim", href: "/iletisim" },
-  { label: "Gizlilik Politikası", href: null },
-  { label: "KVKK", href: null },
-  { label: "Kullanım Şartları", href: null },
+  { label: "Gizlilik Politikası", href: "/gizlilik" },
+  { label: "KVKK", href: "/kvkk" },
+  { label: "Kullanım Şartları", href: "/kullanim-sartlari" },
 ];
 
 export function Footer() {
@@ -22,10 +22,12 @@ export function Footer() {
         <div>
           <Image
             className="footer-logo"
-            src="/logo.png"
+            src="/logo-v2.png"
             alt="Study Global"
-            width={140}
-            height={40}
+            width={320}
+            height={96}
+            style={{ height: "auto", maxWidth: "260px", background: "white", padding: "10px 14px", borderRadius: "10px" }}
+            unoptimized
           />
           <p>
             Study Global, öğrencilerin hedeflerine en uygun ülke, program ve başvuru
@@ -59,8 +61,8 @@ export function Footer() {
                   {link.label}
                 </Link>
               ) : (
-                <span key={link.label} style={{ opacity: 0.5, cursor: "not-allowed" }}>
-                  {link.label}
+                <span key={link.label} className="footer-link-soon" title="Yakında">
+                  {link.label} <em>Yakında</em>
                 </span>
               )
             )}
