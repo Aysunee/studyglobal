@@ -151,6 +151,9 @@ export function Header() {
   return (
     <header className={headerClass}>
       <div className="nav-wrap" onMouseLeave={hideBubble}>
+        <Link href="/" className="nav-brand" aria-label="Study Global ana sayfa">
+          Study<span>Global</span>
+        </Link>
         <nav className={`nav-links${open ? " open" : ""}`} data-nav="">
           {navLinks.map((link) => (
             <Link

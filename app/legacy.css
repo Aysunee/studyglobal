@@ -2835,7 +2835,40 @@ body.has-sticky-lead .chat-widget {
   cursor: pointer;
 }
 
+/* Brand: hidden on desktop, shown on tablet/mobile */
+.nav-brand {
+  display: none;
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  color: var(--royal-navy);
+  white-space: nowrap;
+}
+
+.nav-brand span {
+  color: var(--royal-gold);
+  margin-left: 2px;
+}
+
+.site-header.is-top .nav-brand {
+  color: var(--paper-white);
+}
+
 @media (max-width: 1060px) {
+  .nav-brand {
+    display: inline-flex;
+    align-items: center;
+    margin-right: auto;
+  }
+
+  .nav-actions {
+    margin-left: auto;
+  }
+
+  .nav-actions .btn:not(.hamburger) {
+    display: none;
+  }
+
   .nav-links {
     position: absolute;
     left: 20px;
