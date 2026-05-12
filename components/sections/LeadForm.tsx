@@ -5,10 +5,18 @@ import { useState, type FormEvent } from "react";
 
 export function LeadForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [contactError, setContactError] = useState(false);
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
+    const phone = String(fd.get("phone") ?? "").trim();
+    const email = String(fd.get("email") ?? "").trim();
+    if (!phone && !email) {
+      setContactError(true);
+      return;
+    }
+    setContactError(false);
     const data = Object.fromEntries(fd.entries());
     console.log("Lead form data:", data);
     setSubmitted(true);
@@ -38,11 +46,20 @@ export function LeadForm() {
       <form className="form-grid" onSubmit={handleSubmit}>
         <input required name="name" type="text" placeholder="Ad Soyad" />
         <input
-          required
           name="phone"
           type="tel"
           placeholder="Telefon / WhatsApp"
         />
+        <input
+          name="email"
+          type="email"
+          placeholder="E-posta"
+        />
+        {contactError && (
+          <small style={{ color: "#ffb8b3", marginTop: "-4px" }}>
+            Lütfen telefon ya da e-posta bilgilerinden en az birini girin.
+          </small>
+        )}
         <select required name="interest" defaultValue="">
           <option value="" disabled>
             İlgi Alanı Seçin
